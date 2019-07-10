@@ -52,7 +52,7 @@ export default {
   },
   methods: {
     toDetail(data) {
-      console.log(1111111, data);
+      this.$router.push(`Detail/${data}`);
     }
   },
   mounted() {

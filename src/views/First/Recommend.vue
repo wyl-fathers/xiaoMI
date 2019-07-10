@@ -74,7 +74,11 @@
     ></div>
 
     <div v-for="(data,index1) in dataList" :key="index1" :class="'cells_auto_fill__father_'+index1">
-      <div v-for="(item,index) in data.body.items" :key="'item'+index">
+      <div
+        v-for="(item,index) in data.body.items"
+        :key="'item'+index"
+        @click="toDetail(item.product_id)"
+      >
         <div :class="'cells_auto_fill__'+index1">
           <p v-show="item.action_title">{{item.action_title}}&gt;</p>
           <img :src="item.img_url" alt v-lazy="item.img_url" />
@@ -112,7 +116,11 @@ export default {
       AllList: []
     };
   },
-  methods: {},
+  methods: {
+    toDetail(data) {
+      this.$router.push(`Detail/${data}`);
+    }
+  },
   mounted() {
     axios({
       method: "post",

@@ -1,6 +1,5 @@
 <template>
   <div>
-    detail
     <SwiperDetail v-if="dataList.length" :key="dataList.length">
       <div
         class="swiper-slide first-swiper"
@@ -15,7 +14,12 @@
       <div class="description" v-if="productDesc" v-html="productDesc">{{productDesc}}</div>
       <h1 class="price" v-if="marketPrice">￥{{marketPrice}}</h1>
     </div>
-    <DetailSwiper :key="parametersList.length" perView="" class="parameterSwiper" myClass="parameterSwiper">
+    <DetailSwiper
+      :key="parametersList.length"
+      perView
+      class="parameterSwiper"
+      myClass="parameterSwiper"
+    >
       <div
         class="swiper-slide sec-swiper"
         v-for="data in parametersList"
@@ -35,16 +39,27 @@
     </div>
     <div class="related" v-if="relatedRecommend">
       <h2>{{relatedRecommend.title}}</h2>
-       <DetailSwiper :key="relatedRecommendData.length" perView="4" class="relatedSwiper" myClass="relatedSwiper">
-        <div class="swiper-slide thrid-swiper" v-for="data in relatedRecommendData" :key="data.product_id">
-          <img :src="data.image_url">
+      <DetailSwiper
+        :key="relatedRecommendData.length"
+        perView="4"
+        class="relatedSwiper"
+        myClass="relatedSwiper"
+      >
+        <div
+          class="swiper-slide thrid-swiper"
+          v-for="data in relatedRecommendData"
+          :key="data.product_id"
+        >
+          <img :src="data.image_url" />
           <div class="marketPrice">￥{{data.market_price}}</div>
           <div class="relatedName">{{data.name}}</div>
         </div>
       </DetailSwiper>
     </div>
-    <div class="bg-img" v-for="data in imgList" :key="data.body.block_id" v-if="data.body.img_url">
-      <img :src="data.body.img_url" alt="">
+    <div v-if="lzc">
+      <div class="bg-img" v-for="(data,index) in lzc.sections" :key="index+'asd'">
+        <img :src="data.body.img_url" alt />
+      </div>
     </div>
   </div>
 </template>
@@ -63,9 +78,11 @@ export default {
       productDesc: null,
       marketPrice: null,
       parametersList: [],
-      relatedRecommend:null,
-      relatedRecommendData:[],
-      imgList:[],
+      relatedRecommend: null,
+      relatedRecommendData: [],
+      imgList: [],
+      id: null,
+      lzc: null
     };
   },
   components: {
@@ -73,23 +90,37 @@ export default {
     DetailSwiper,
     Activies
   },
+  beforeMount() {
+    this.$store.commit("NavHide", false);
+    this.id = this.$route.params.commodity_id;
+  },
   mounted() {
+    console.log(this.id);
     axios({
       method: "post",
       url: "/v1/miproduct/view",
-      data:
-        "client_id=180100031051&channel_id=0&webp=1&commodity_id=10000151&pid=10000151"
+      data: `client_id=180100031051&channel_id=0&webp=1&commodity_id=${this.id}&pid=${this.id}`
     }).then(resp => {
-      // console.log(resp.data.data);
       this.dataList = resp.data.data.goods_info;
       this.productName = resp.data.data.product_info.name;
       this.productDesc = resp.data.data.product_info.product_desc;
       this.marketPrice = resp.data.data.goods_info[0].market_price;
       this.parametersList = resp.data.data.goods_info[0].class_parameters.list;
       this.relatedRecommend = resp.data.data.related_recommend;
-      this.relatedRecommendData = resp.data.data.related_recommend.data;
-      this.imgList = resp.data.data.goods_tpl_datas[9680].sections
+      if (resp.data.data.related_recommend.data) {
+        this.relatedRecommendData = resp.data.data.related_recommend.data;
+      } else {
+        this.relatedRecommendData = [];
+      }
+      this.imgList = resp.data.data.goods_tpl_datas;
+
+      for (var i in this.imgList) {
+        this.lzc = this.imgList[i];
+      }
     });
+  },
+  beforeDestroy() {
+    this.$store.commit("NavHide", true);
   }
 };
 </script>
@@ -133,14 +164,14 @@ export default {
   background: #e5e5e5;
   border-radius: 5.12px;
 }
-.related{
+.related {
   height: 2rem;
 }
-.thrid-swiper{
+.thrid-swiper {
   text-align: center;
 }
-.bg-img{
-  img{
+.bg-img {
+  img {
     display: block;
     width: 100%;
     height: auto;
