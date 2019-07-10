@@ -105,7 +105,12 @@ export default {
       this.productName = resp.data.data.product_info.name;
       this.productDesc = resp.data.data.product_info.product_desc;
       this.marketPrice = resp.data.data.goods_info[0].market_price;
-      this.parametersList = resp.data.data.goods_info[0].class_parameters.list;
+      if (resp.data.data.goods_info[0].class_parameters.list) {
+        this.parametersList =
+          resp.data.data.goods_info[0].class_parameters.list;
+      } else {
+        this.parametersList = [];
+      }
       this.relatedRecommend = resp.data.data.related_recommend;
       if (resp.data.data.related_recommend.data) {
         this.relatedRecommendData = resp.data.data.related_recommend.data;
@@ -117,6 +122,8 @@ export default {
       for (var i in this.imgList) {
         this.lzc = this.imgList[i];
       }
+      console.log(resp.data.data);
+      console.log(resp.data.data.goods_info[0]);
     });
   },
   beforeDestroy() {
