@@ -1,17 +1,29 @@
 <template>
   <div>
     <div class="HeaderDown">
-      <span class="iconfont">&#xe66d;</span>
+      <span class="iconfont" @click="back">&#xe66d;</span>
       <p>
         <slot></slot>
       </p>
-      <span class="iconfont">&#xe66f;</span>
+      <span class="iconfont" @click="search">&#xe66f;</span>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {};
+  },
+  methods: {
+    back() {
+      this.$router.go(-1);
+    },
+    search() {
+      this.$router.push("/About");
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -21,6 +33,7 @@ export default {};
   display: flex;
   align-items: center;
   justify-content: space-around;
+  background: #f2f2f2;
   // justify-content: sp;
   p {
     display: flex;

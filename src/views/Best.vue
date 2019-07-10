@@ -1,150 +1,87 @@
 <template>
   <div>
-    <Head></Head>
-    <router-view></router-view>
-    <!-- <BestHead></BestHead> -->
-    <!-- <BestList class="BestList">
-      <div v-for="data in AllList[1]" :key="data.ad_position_id">
-        <img :src="data.img_url" alt />
-      </div>
-      <div v-for="data in AllList[2]" :key="data.ad_position_id">
-        <img :src="data.img_url" alt />
-      </div>
-    </BestList>
-    <div
-      class="divider_line"
-      v-for="data in AllList[3]"
-      :key="data.ad_position_id?data.ad_position_id:Math.random()"
-    ></div>
-    <div class="cell_fill">
-      <div
-        v-for="(data,index) in AllList[4]"
-        :key="data.ad_position_id?data.ad_position_id:Math.random()"
-        class="cells_auto_fill"
-      >
-        <img :src="data.img_url" :class="'cells'+index" />
-      </div>
+    <div :class="isFixed?'fixed':''" id="wyl">
+      <Input1></Input1>
+      <HeaderSwiper @lzcindex="geiindex" ref="myswiper"></HeaderSwiper>
     </div>
-    <div
-      class="divider_line"
-      v-for="data in AllList[5]"
-      :key="data.ad_position_id?data.ad_position_id:Math.random()"
-    ></div>
-
-    <div class="cells_auto_fill_1_father">
-      <div
-        v-for="(data,index) in AllList[6]"
-        :key="data.ad_position_id?data.ad_position_id:Math.random()"
-        class="cells_auto_fill_1"
-      >
-        <img :src="data.img_url" :class="'cells_1'+index" />
-      </div>
-    </div>
-    <div
-      class="divider_line"
-      v-for="data in AllList[7]"
-      :key="data.ad_position_id?data.ad_position_id:Math.random()"
-    ></div>
-
-    <div
-      v-for="(data) in AllList[8]"
-      :key="data.ad_position_id?data.ad_position_id:Math.random()"
-      class="cells_auto_fill_8"
-    >
-      <img :src="data.img_url" />
-    </div>
-
-    <div
-      class="divider_line"
-      v-for="data in AllList[9]"
-      :key="data.ad_position_id?data.ad_position_id:Math.random()"
-    ></div>-->
-
-    <!--  ke  shan  可删  <div
-      v-for="(data) in AllList[10]"
-      :key="data.ad_position_id?data.ad_position_id:Math.random()"
-      class="cells_auto_fill_10"
-    >
-      <img :src="data.img_url" />
-    </div>-->
-
-    <!-- <div
-      class="divider_line"
-      v-for="data in AllList[11]"
-      :key="data.ad_position_id?data.ad_position_id:Math.random()"
-    ></div>
-
-    <div v-for="(data,index1) in dataList" :key="index1" :class="'cells_auto_fill__father_'+index1">
-      <div v-for="(item,index) in data.body.items" :key="'item'+index">
-        <div :class="'cells_auto_fill__'+index1">
-          <p v-show="item.action_title">{{item.action_title}}&gt;</p>
-          <img :src="item.img_url" alt />
-          <p :class="'cells_auto_fill__p1_'+index1">{{item.product_name}}</p>
-          <p :class="'cells_auto_fill__p2_'+index1">{{item.product_brief}}</p>
-          <p :class="'cells_auto_fill__p3_'+index1">
-            <b v-show="item.product_price">￥</b>
-            {{item.product_price}}
-            <span
-              v-show="! (item.product_org_price === item.product_price)"
-            >{{item.product_org_price}}</span>
-          </p>
-          <div v-show="item.product_price" class="button_father">
-            <button :class="'cells_auto_fill__btn_'+index1" v-show="item.product_price">立即购买</button>
-          </div>
-        </div>
-      </div>
-    </div>-->
+    <component :is="'Recommend'+ccc"></component>
   </div>
 </template>
 
 <script>
 // import axios from "axios";
-import Head from "@/views/Head.vue";
+import Input1 from "@/components/Input.vue";
+import HeaderSwiper from "@/views/Header/HeaderSwiper.vue";
+
+import Recommend1 from "@/views/First/Phone.vue";
+import Recommend2 from "@/views/First/Brain.vue";
+import Recommend5 from "@/views/First/HouseEle.vue";
+import Recommend6 from "@/views/First/Live.vue";
+import Recommend3 from "@/views/First/TV.vue";
+import Recommend4 from "@/views/First/NoteBook.vue";
+import Recommend0 from "@/views/First/Recommend.vue";
+
 // import BestHead from "@/views/Best/BestHead.vue";
 // import BestList from "@/views/Best/BestList.vue";
 export default {
-  // data() {
-  //   return {
-  //     dataList: [],
-  //     sections: [],
-  //     AllList: []
-  //   };
-  // },
-  // mounted() {
-  //   axios({
-  //     method: "post",
-  //     url: "/v1/home/page",
-  //     data: {
-  //       client_id: "180100031051",
-  //       channel_id: "0",
-  //       webp: "1",
-  //       page_type: "recommend",
-  //       recommend_tag: "XMGUEST-4E017660-9F8B-11E9-8EF2-E7ECC66E4982"
-  //     }
-  //   }).then(resp => {
-  //     this.sections = resp.data.data.data.sections;
-  //     this.sections.forEach(el => {
-  //       if (el.body.items) {
-  //         this.AllList.push(el.body.items);
-  //       } else {
-  //         this.AllList.push(1);
-  //       }
-  //     });
-  //     this.dataList = this.sections.filter((el, index) => {
-  //       return index > 11;
-  //     });
-  //     console.log(this.dataList);
-  //   });
-  // },
+  data() {
+    return {
+      ccc: 0,
+      isFixed: false
+    };
+  },
+  methods: {
+    geiindex(data) {
+      this.ccc = data;
+    },
+
+    Scroll() {
+      if (
+        document.documentElement.scrollTop >=
+        this.$refs.myswiper.$el.offsetHeight
+      ) {
+        this.isFixed = true;
+      } else {
+        this.isFixed = false;
+      }
+    }
+  },
   components: {
-    // BestHead,
-    // BestList,
-    Head
+    Input1,
+    HeaderSwiper,
+    Recommend1,
+    Recommend2,
+    Recommend5,
+    Recommend6,
+    Recommend3,
+    Recommend4,
+    Recommend0
+  },
+  mounted() {
+    window.onscroll = this.Scroll;
+  },
+  beforeDestroy() {
+    window.onscroll = null;
   }
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
+#wyl {
+  width: 100%;
+  background: #f2f2f2;
+}
+.color11 {
+  color: #f60;
+}
+
+.fixed {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99999;
+  background: #f2f2f2;
+}
 // .divider_line {
 //   background: #f5f5f5;
 //   height: 0.08rem;

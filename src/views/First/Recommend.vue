@@ -4,10 +4,10 @@
     <BestHead></BestHead>
     <BestList class="BestList">
       <div v-for="data in AllList[1]" :key="data.ad_position_id">
-        <img :src="data.img_url" alt />
+        <img :src="data.img_url" alt v-lazy="data.img_url" />
       </div>
       <div v-for="data in AllList[2]" :key="data.ad_position_id">
-        <img :src="data.img_url" alt />
+        <img :src="data.img_url" alt v-lazy="data.img_url" />
       </div>
     </BestList>
     <div
@@ -21,7 +21,7 @@
         :key="data.ad_position_id?data.ad_position_id:Math.random()"
         class="cells_auto_fill"
       >
-        <img :src="data.img_url" :class="'cells'+index" />
+        <img :src="data.img_url" :class="'cells'+index" v-lazy="data.img_url" />
       </div>
     </div>
     <div
@@ -36,7 +36,7 @@
         :key="data.ad_position_id?data.ad_position_id:Math.random()"
         class="cells_auto_fill_1"
       >
-        <img :src="data.img_url" :class="'cells_1'+index" />
+        <img :src="data.img_url" :class="'cells_1'+index" v-lazy="data.img_url" />
       </div>
     </div>
     <div
@@ -50,7 +50,7 @@
       :key="data.ad_position_id?data.ad_position_id:Math.random()"
       class="cells_auto_fill_8"
     >
-      <img :src="data.img_url" />
+      <img :src="data.img_url" v-lazy="data.img_url" />
     </div>
 
     <div
@@ -77,7 +77,7 @@
       <div v-for="(item,index) in data.body.items" :key="'item'+index">
         <div :class="'cells_auto_fill__'+index1">
           <p v-show="item.action_title">{{item.action_title}}&gt;</p>
-          <img :src="item.img_url" alt />
+          <img :src="item.img_url" alt v-lazy="item.img_url" />
           <p :class="'cells_auto_fill__p1_'+index1">{{item.product_name}}</p>
           <p :class="'cells_auto_fill__p2_'+index1">{{item.product_brief}}</p>
           <p :class="'cells_auto_fill__p3_'+index1">
@@ -98,9 +98,12 @@
 
 <script>
 import axios from "axios";
-// import Head from "@/views/Head.vue";
 import BestHead from "@/views/Best/BestHead.vue";
 import BestList from "@/views/Best/BestList.vue";
+
+import { Lazyload } from "mint-ui";
+
+// Vue.use(Lazyload);
 export default {
   data() {
     return {
@@ -109,6 +112,7 @@ export default {
       AllList: []
     };
   },
+  methods: {},
   mounted() {
     axios({
       method: "post",
@@ -138,12 +142,14 @@ export default {
   components: {
     BestHead,
     BestList
-    // Head
   }
 };
 </script>
 
 <style lang="scss" scoped>
+button {
+  font-size: 0.14rem;
+}
 .divider_line {
   background: #f5f5f5;
   height: 0.08rem;
@@ -371,6 +377,10 @@ export default {
   p {
     font-size: 0.16rem;
     line-height: 0.52rem;
+  }
+  img {
+    width: 100%;
+    height: 100%;
   }
 }
 

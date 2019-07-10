@@ -2,7 +2,7 @@
   <div>
     <div class="Input">
       <i class="iconfont i1">&#xe661;</i>
-      <input type="text" name="sousuo" class="iconfont" :placeholder="icon" />
+      <input type="text" name="sousuo" class="iconfont" :placeholder="icon" @click="search" />
       <i class="iconfont">&#xe686;</i>
     </div>
   </div>
@@ -14,6 +14,11 @@ export default {
     return {
       icon: `\ue66f  搜索商品名称 `
     };
+  },
+  methods: {
+    search() {
+      this.$router.push("/About");
+    }
   }
 };
 </script>
@@ -25,14 +30,22 @@ export default {
   justify-content: space-around;
   align-items: center;
   input {
+    border-radius: 1%;
+    border: solid #ccc 0.01rem;
     height: 0.3rem;
     width: 2.7rem;
+    font-size: 0.175rem;
   }
   i {
-    font-size: 0.24rem;
+    text-align: center;
+    line-height: 0.3125rem;
+    width: 0.51rem;
+    height: 0.3125rem;
+    font-size: 0.27rem;
   }
-  .i1{
+  .i1 {
     color: #fa6d09;
+    width: 0.51rem;
   }
 }
 </style>

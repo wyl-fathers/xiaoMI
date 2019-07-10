@@ -17,6 +17,7 @@ export default {
   mounted() {
     this.$nextTick(() => {
       new Swiper(".Swiper1", {
+        loop: true,
         pagination: {
           el: ".swiper-pagination"
         }

@@ -22,7 +22,7 @@
                 :key="ccc.action.path"
                 :class="'div_'+indexc+index+index1+' '+'lzcOwn'"
               >
-                <img :src="ccc.img_url" :class="'box'+index+'img_'+index1" />
+                <img :src="ccc.img_url" :class="'box'+index+'img_'+index1" v-lazy="ccc.img_url" />
                 <p v-if="ccc.product_name">{{ccc.product_name}}</p>
               </div>
             </div>
@@ -36,7 +36,7 @@
 <script>
 import Vue from "vue";
 import axios from "axios";
-import { IndexList, IndexSection } from "mint-ui";
+import { IndexList, IndexSection, Lazyload } from "mint-ui";
 
 Vue.component(IndexList.name, IndexList);
 Vue.component(IndexSection.name, IndexSection);
@@ -79,8 +79,19 @@ export default {
 .mint-indexsection-index {
   font-size: 0.16rem;
 }
-.mint-indexlist-nav {
+ul.mint-indexlist-content {
+  margin-left: 0.76rem;
+  margin-right: 0 !important;
+}
+div.mint-indexlist-nav {
   overflow: scroll;
+  // position: absolute;
+
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: initial;
+  border-right: 0.01rem #ddd solid;
   //   height: 543.25px !important;
   ul {
     height: 5.65rem;
@@ -96,6 +107,7 @@ export default {
     }
   }
 }
+
 #zlzc {
   overflow: scroll;
 }
