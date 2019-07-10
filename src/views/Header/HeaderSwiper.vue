@@ -2,14 +2,14 @@
   <div>
     <div class="swiper-container HeaderSwiper">
       <div class="swiper-wrapper">
-        <!-- <div class="swiper-slide" v-for=" data in dataList" :key="data.page_id"></div> -->
-        <router-link
+        <div
           class="swiper-slide"
           v-for=" (data,index) in dataList"
           :key="data.page_id"
-          tag="div"
-          :to="'/Best/Recommend'+index"
-        >{{data.name}}</router-link>
+          @click="check(index)"
+        >
+          <p :class="{color:iscolor===index}">{{data.name}}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -21,8 +21,17 @@ import Swiper from "swiper";
 export default {
   data() {
     return {
-      dataList: []
+      dataList: [],
+      iscolor: 0
     };
+  },
+  methods: {
+    check(el) {
+      // console.log(el);
+      this.$emit("lzcindex", el);
+      this.iscolor = el;
+    },
+    isChange() {}
   },
   mounted() {
     axios({
@@ -40,13 +49,8 @@ export default {
       this.dataList = resp.data.data.tabs;
       this.$nextTick(() => {
         new Swiper(".HeaderSwiper", {
-          slidesPerView: 12,
-          spaceBetween: 0,
-          freeMode: true,
-          pagination: {
-            el: ".swiper-pagination",
-            clickable: true
-          }
+          // loop: true,
+          slidesPerView: 5
         });
       });
     });
@@ -55,15 +59,29 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+p {
+  height: 100%;
+}
+.color {
+  color: #ff6600;
+  box-sizing: border-box;
+  border-bottom: 0.05rem solid #ff6600;
+}
 .swiper-wrapper {
   display: flex;
   //   justify-content: flex-start;
 }
 .swiper-slide {
   height: 0.3rem;
-  font-size: 0.16rem;
+  line-height: 0.3rem;
   text-align: center;
-  padding: 0 0.13rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // width: 0.75rem !important;
+  // padding: 0 0.13rem;
+  color: #3c3c3c;
+  font-size: 0.14rem;
 }
 .HeaderSwiper {
   overflow: hidden;

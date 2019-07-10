@@ -50,7 +50,10 @@ ul {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 0.16rem;
+    font-size: 0.12rem;
+    i {
+      font-size: 0.23rem;
+    }
   }
 }
 .active {
