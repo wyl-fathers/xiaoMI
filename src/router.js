@@ -11,6 +11,7 @@ import Live from '@/views/First/Live.vue'
 import TV from '@/views/First/TV.vue'
 import NoteBook from '@/views/First/NoteBook.vue'
 import Recommend from '@/views/First/Recommend.vue'
+import Detail from '@/views/Detail'
 
 Vue.use(Router)
 
@@ -61,7 +62,6 @@ export default new Router({
           component: Live
         }
 
-
       ]
     },
     {
@@ -72,6 +72,10 @@ export default new Router({
       path: '/User',
       component: User
     },
+    {
+      path: '/detail/:commodity_id',
+      component: Detail
+    }
 
   ]
 })
