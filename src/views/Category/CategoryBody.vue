@@ -84,6 +84,7 @@ export default {
 <style lang="scss" >
 .mint-indexsection-index {
   font-size: 0.16rem;
+  text-align: center; 
 }
 ul.mint-indexlist-content {
   margin-left: 0.76rem;

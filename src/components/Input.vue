@@ -3,7 +3,7 @@
     <div class="Input">
       <i class="iconfont i1">&#xe661;</i>
       <input type="text" name="sousuo" class="iconfont" :placeholder="icon" @click="search" />
-      <i class="iconfont">&#xe686;</i>
+      <i class="iconfont" @click="touser">&#xe686;</i>
     </div>
   </div>
 </template>
@@ -18,6 +18,9 @@ export default {
   methods: {
     search() {
       this.$router.push("/About");
+    },
+    touser() {
+      this.$router.push("/User");
     }
   }
 };
