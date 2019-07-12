@@ -5,7 +5,7 @@ import Category from '@/views/Category.vue'
 import User from '@/views/User.vue'
 import Cart from '@/views/Cart.vue'
 import About from '@/views/About.vue'
-
+import Pay from '@/views/Cart/Pay.vue'
 
 import Mpointsmall from '@/views/User/Mpointsmall.vue'
 import Services from '@/views/User/Services.vue'
@@ -65,6 +65,11 @@ export default new Router({
       path: '/Services',
       component: Services
     },
+    
+    {
+      path: '/Pay',
+      component: Pay
+    }
 
 
 

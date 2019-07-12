@@ -5,12 +5,11 @@
       <span id="zi1">购物车还是空的</span>
       <span id="qgg" @click="handlehome()">去逛逛</span>
     </div>
-    <Cnxh> </Cnxh>
+ 
   </div>
 </template>
 
 <script>
-import Cnxh from '@/components/Cnxh.vue'
 import axios from "axios";
 export default {
   data() {
@@ -26,9 +25,7 @@ export default {
     }
   },
 
-    handledetail(){
-      this.$router.push("");
-    },
+    
 
   mounted() {
     axios({
@@ -42,9 +39,7 @@ export default {
       console.log(this.datalist);
     });
   },
-  components:{
-    Cnxh,
-  }
+  
 };
 </script>
 

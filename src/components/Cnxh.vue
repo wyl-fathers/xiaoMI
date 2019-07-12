@@ -5,7 +5,7 @@
     </div>
 
     <ul class="nmb">
-      <li v-for="data in datalist" :key="data.path" @click="handledetail(data.path)">
+      <li v-for="data in datalist" :key="data.path" @click="handledetail(data)" >
         <img :src="data.image_url" />
         <div class="good">
           <div class="name">{{data.name}}</div>
@@ -35,16 +35,17 @@ export default {
     handlehome() {
       this.$router.push("/Best");
     },
-    handledetail() {
-      console.log(1111);
-      this.$router.push("");
+    handledetail(goods_id) {
+    var zzz =goods_id
+      console.log(zzz)
+      this.$router.push(`/Detail/${zzz.action.path}`);
     }
   },
 
   mounted() {
     axios({
       method: "post",
-      url: "v1/home/recommendBlank",
+      url: "/v1/home/recommendBlank",
       data:
         "client_id=180100031051&channel_id=0&webp=1&source=list&recommend_tag=XMGUEST-4DE00030-A142-11E9-B821-1F90296FF9DF"
     }).then(res => {
