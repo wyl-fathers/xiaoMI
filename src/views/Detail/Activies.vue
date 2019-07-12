@@ -1,34 +1,29 @@
 <template>
   <div class="sell">
- 
-    <div v-for="(data,index) in dataList" :key="index" @click='actionSheet'>
+    <div v-for="(data,index) in dataList" :key="index" @click='popup' class="pad">
      <span class="type">{{data.type_desc}}</span>
      <span class="title">{{data.title}}</span>
     </div>
-   <mt-popup v-model="popupVisible" position="bottom">
-    <button>取消</button>
-   </mt-popup>
+   <div class="popup" v-show="isShow">
+     <span class="cover"></span>
+    <div>11111111</div>
+   </div>
  
   </div>
 </template>
 
 <script>
-import axios from 'axios';
-import { Popup } from 'mint-ui';
-import Vue from 'vue';
-Vue.component(Popup.name, Popup);
+import axios from 'axios'
 
 export default {
   data(){
     return{
       dataList:[],
-      slot:[],
-      popupVisible:false,
     }
   },
   methods:{
-actionSheet(){
-  this.popupVisible =true
+Popup(){
+
 },
   },
   mounted(){
@@ -46,11 +41,42 @@ actionSheet(){
 
 <style lang="scss" scoped>
   .sell{
-    margin-top:.1rem;
+    .pad{
+      margin-bottom: .1rem;
+    }
+    margin:.15rem 0 0 .02rem;
     height: 0.6054rem;
     width: 3.4185rem;
     background: #e5e5e5;
-    border-radius: 5.12px;
+    border-radius:.1rem;
+    padding: .15rem;
+    .type{
+      border: 1px solid #f56600;
+      color: #f56600;
+      margin: .2rem .05rem .2rem .35rem;
+      padding:0rem;
+    } 
+    .title{
+      font-size: .14rem;
+      color: rgba(0,0,0,.87);
+    }
   }
-
+.popup{
+  width:100%;
+  display: block !important;
+  height: 4rem;
+  background:#f60;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 10001;
+}
+  .popup::before{
+    content: '';
+    height: 6.75rem;
+    width: 100%;
+    background: rgba(0, 0, 0, .5);
+    position: fixed;
+    top:0;
+  }
 </style>

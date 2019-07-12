@@ -4,7 +4,7 @@
       <Input1></Input1>
       <HeaderSwiper @lzcindex="geiindex" ref="myswiper"></HeaderSwiper>
     </div>
-    <component :is="'Recommend'+ccc"></component>
+    <component :is="'Recommend'+ccc" @towhitch="geiindex"></component>
   </div>
 </template>
 

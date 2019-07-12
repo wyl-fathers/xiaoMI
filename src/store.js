@@ -8,6 +8,8 @@ export default new Vuex.Store({
     NavIsShow: true,
     hide:true,
     goodslist:[]
+
+
   },
   mutations: {
 
@@ -33,16 +35,12 @@ export default new Vuex.Store({
 
     NavShow(state, data) {
 
-
-
       state.NavIsShow = data
     },
     NavHide(state, data) {
 
-
-
       state.NavIsShow = data
-    },
+    }
   },
   actions: {
 

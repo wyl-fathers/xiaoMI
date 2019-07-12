@@ -1,7 +1,7 @@
 <template>
   <transition name="slide-fade">
     <div class="page-component-up" v-if="isShow" @click="getTop">
-      <i class="el-icon-caret-top">↑</i>
+      <span class="iconfont el-icon-caret-top">&#xe635;</span>
     </div>
   </transition>
 </template>
@@ -65,7 +65,7 @@ export default {
   opacity: 0;
 }
 .page-component-up {
-  i {
+  .el-icon-caret-top {
     font-style: normal;
     color: black;
   }
@@ -76,6 +76,7 @@ export default {
   bottom: 8rem;
   width: 0.5rem;
   height: 0.5rem;
+  line-height: 0.5rem;
   border-radius: 0.25rem;
   cursor: pointer;
   opacity: 0.7;
