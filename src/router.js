@@ -6,10 +6,10 @@ import User from '@/views/User.vue'
 import Cart from '@/views/Cart.vue'
 import About from '@/views/About.vue'
 
-
 import Mpointsmall from '@/views/User/Mpointsmall.vue'
 import Services from '@/views/User/Services.vue'
-
+import Pass from '@/views/User/Pass.vue'
+import Maplocation from '@/views/User/Maplocation.vue'
 
 import Detail from '@/views/Detail'
 
@@ -27,7 +27,6 @@ export default new Router({
       path: '/About',
       component: About
     },
-
 
     {
       path: '/Best',
@@ -65,9 +64,13 @@ export default new Router({
       path: '/Services',
       component: Services
     },
-
-
-
-
+    {
+      path: '/Pass',
+      component: Pass
+    },
+    {
+      path: '/Maplocation',
+      component: Maplocation
+    }
   ]
 })
