@@ -13,16 +13,12 @@ export default new Vuex.Store({
 
     NavShow(state, data) {
 
-
-
       state.NavIsShow = data
     },
     NavHide(state, data) {
 
-
-
       state.NavIsShow = data
-    },
+    }
   },
   actions: {
 

@@ -7,12 +7,16 @@ import Cart from '@/views/Cart.vue'
 import About from '@/views/About.vue'
 import AboutList from '@/views/About/AboutList.vue'
 
-
 import Mpointsmall from '@/views/User/Mpointsmall.vue'
 import Services from '@/views/User/Services.vue'
 
+
 import OldtoNew from '@/views/Cannel/OldtoNew.vue'
 import Xiaomzc from '@/views/Cannel/Xiaomzc.vue'
+
+import Pass from '@/views/User/Pass.vue'
+import Maplocation from '@/views/User/Maplocation.vue'
+
 
 
 import Cannel from '@/views/Cannel/Cannel.vue'
@@ -54,7 +58,6 @@ export default new Router({
 
       ]
     },
-
 
     {
       path: '/Best',
@@ -110,5 +113,13 @@ export default new Router({
 
 
 
+    {
+      path: '/Pass',
+      component: Pass
+    },
+    {
+      path: '/Maplocation',
+      component: Maplocation
+    }
   ]
 })

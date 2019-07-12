@@ -2,41 +2,40 @@
   <div>
     <header class="hd">
       <div class="user ui-flex align-center">
-        <div class="img">
+        <router-link to="/pass" tag="div"  class="img">
           <img src="../../public/img/avatar.png" />
-        </div>
-        <div class="name">登录/注册</div>
+        </router-link>
+        <router-link to="/pass" tag="div"  class="name">登录/注册</router-link>
       </div>
     </header>
     <div class="b1 ui-flex align-center justify-space-between">
       <div class="cite">我的订单</div>
       <div class="span ui-flex align-center">
-        <div>
+        <router-link to="/pass" tag="div" >
           全部订单
           <span class="iconfont">&#xe66e;</span>
-        </div>
+        </router-link>
       </div>
     </div>
     <ul class="b2 ui-flex align-center justify-space-between">
       <li class="dfk">
-        <div>
+       <div @click="ccc">
           <div class="iconfont"></div>
           <span>待付款</span>
-          <!---->
-        </div>
+       </div>
       </li>
       <li class="dah">
-        <div>
+        <router-link to="/pass" tag="div" >
           <div class="iconfont"></div>
           <span>待收货</span>
           <!---->
-        </div>
+        </router-link>
       </li>
       <li class="thx">
-        <div>
+        <router-link to="/pass" tag="div" >
           <div class="iconfont"></div>
           <span>退换修</span>
-        </div>
+        </router-link>
       </li>
     </ul>
     <div class="ui-line"></div>
@@ -47,9 +46,9 @@
         </router-link >
       </li>
       <li class="i-wallet">
-        <div>
+        <router-link to="/pass" tag="div" >
           <cite>我的优惠</cite>
-        </div>
+        </router-link>
       </li>
     </ul>
     <div class="ui-line"></div>
@@ -60,32 +59,39 @@
         </router-link>
       </li>
       <li class="i-mihome">
-        <div>
+        <router-link to="/Maplocation" tag="div" >
           <cite>小米之家</cite>
-        </div>
+        </router-link>
       </li>
     </ul>
     <div class="ui-line"></div>
     <ul class="items">
       <li class="i-fcode">
-        <div>
+        <router-link to="/pass" tag="div" >
           <cite>F码通道</cite>
-        </div>
+        </router-link>
       </li>
     </ul>
     <div class="ui-line"></div>
     <ul class="items">
       <li class="i-setting">
-        <div>
+        <router-link to="/pass" tag="div" >
           <cite>设置</cite>
-        </div>
+        </router-link>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  methods:{
+    ccc(){
+      // console.log(213)
+      this.$router.push('/Pass')
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
