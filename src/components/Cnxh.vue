@@ -44,7 +44,7 @@ export default {
   mounted() {
     axios({
       method: "post",
-      url: "v1/home/recommendBlank",
+      url: "/v1/home/recommendBlank",
       data:
         "client_id=180100031051&channel_id=0&webp=1&source=list&recommend_tag=XMGUEST-4DE00030-A142-11E9-B821-1F90296FF9DF"
     }).then(res => {

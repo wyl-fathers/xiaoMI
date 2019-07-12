@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="HeaderDown">
+  <div :class="isFixed?'fixed':''" id="wyl">
+    <div class="HeaderDown" ref="myswiper1">
       <span class="iconfont" @click="back">&#xe66d;</span>
       <p>
         <slot></slot>
@@ -13,15 +13,34 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      isFixed: false
+    };
   },
   methods: {
+    Scroll() {
+      // console.log(this.$refs.myswiper1.offsetHeight);
+      if (
+        document.documentElement.scrollTop >= this.$refs.myswiper1.offsetHeight
+      ) {
+        this.isFixed = true;
+      } else {
+        this.isFixed = false;
+      }
+    },
+
     back() {
       this.$router.go(-1);
     },
     search() {
       this.$router.push("/About");
     }
+  },
+  mounted() {
+    window.onscroll = this.Scroll;
+  },
+  beforeDestroy() {
+    window.onscroll = null;
   }
 };
 </script>
@@ -48,5 +67,12 @@ export default {
     font-size: 0.26rem;
     color: #777;
   }
+}
+.fixed {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  background: #f2f2f2;
 }
 </style>

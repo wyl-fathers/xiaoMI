@@ -5,12 +5,17 @@ import Category from '@/views/Category.vue'
 import User from '@/views/User.vue'
 import Cart from '@/views/Cart.vue'
 import About from '@/views/About.vue'
+import AboutList from '@/views/About/AboutList.vue'
 
 
 import Mpointsmall from '@/views/User/Mpointsmall.vue'
 import Services from '@/views/User/Services.vue'
 
+import OldtoNew from '@/views/Cannel/OldtoNew.vue'
+import Xiaomzc from '@/views/Cannel/Xiaomzc.vue'
 
+
+import Cannel from '@/views/Cannel/Cannel.vue'
 import Detail from '@/views/Detail'
 
 Vue.use(Router)
@@ -20,12 +25,34 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
+      path: '*',
+      redirect: '/Best'
+    },
+
+    {
       path: '/',
       redirect: '/Best'
     },
     {
+      path: '/About/list:searchname',
+      component: AboutList
+    },
+
+    {
       path: '/About',
-      component: About
+      component: About,
+      children: [
+        {
+          path: 'list',
+          redirect: '/About/list'
+        },
+        {
+          path: '*',
+          redirect: '/About'
+        }
+
+
+      ]
     },
 
 
@@ -65,6 +92,20 @@ export default new Router({
       path: '/Services',
       component: Services
     },
+    {
+      path: '/Cannel',
+      component: Cannel
+    },
+    {
+      path: '/Xiaomzc',
+      component: Xiaomzc
+    },
+    {
+      path: '/OldtoNew',
+      component: OldtoNew
+    },
+
+
 
 
 

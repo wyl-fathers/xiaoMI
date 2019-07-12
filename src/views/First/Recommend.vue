@@ -3,10 +3,10 @@
     <!-- <Head></Head> -->
     <BestHead></BestHead>
     <BestList class="BestList">
-      <div v-for="data in AllList[1]" :key="data.ad_position_id">
+      <div v-for="(data,index) in AllList[1]" :key="data.ad_position_id" @click="toCannel(index)">
         <img :src="data.img_url" alt v-lazy="data.img_url" />
       </div>
-      <div v-for="data in AllList[2]" :key="data.ad_position_id">
+      <div v-for="(data,index) in AllList[2]" :key="data.ad_position_id" @click="toHomeEle(index)">
         <img :src="data.img_url" alt v-lazy="data.img_url" />
       </div>
     </BestList>
@@ -48,7 +48,7 @@
     <div
       v-for="(data) in AllList[8]"
       :key="data.ad_position_id?data.ad_position_id:Math.random()"
-      class="cells_auto_fill_8"
+      class="cells_auto_fill_8_1"
     >
       <img :src="data.img_url" v-lazy="data.img_url" />
     </div>
@@ -59,13 +59,13 @@
       :key="data.ad_position_id?data.ad_position_id:Math.random()"
     ></div>
 
-    <!-- <div
+    <div
       v-for="(data) in AllList[10]"
       :key="data.ad_position_id?data.ad_position_id:Math.random()"
-      class="cells_auto_fill_10"
+      class="cells_auto_fill_10_1"
     >
       <img :src="data.img_url" />
-    </div>-->
+    </div>
 
     <div
       class="divider_line"
@@ -118,7 +118,42 @@ export default {
   },
   methods: {
     toDetail(data) {
-      this.$router.push(`Detail/${data}`);
+      this.$router.push(`/Detail/${data}`);
+    },
+    toHomeEle(data) {
+      // console.log(data);
+      if (data === 3) {
+        this.$emit("towhitch", 5);
+      }
+      if (data === 2) {
+        this.$emit("towhitch", 3);
+      }
+      if (data === 1) {
+        this.$emit("towhitch", 4);
+      }
+      if (data === 4) {
+        this.$emit("towhitch", 6);
+      }
+      if (data === 0) {
+        this.$emit("towhitch", 6);
+      }
+    },
+    toCannel(data) {
+      if (data === 0) {
+        this.$router.push("/Cannel");
+      }
+      if (data === 1) {
+        this.$router.push("/Xiaomzc");
+      }
+      if (data === 2) {
+        this.$router.push("/Detail/10000164");
+      }
+      if (data === 3) {
+        this.$router.push("/OldtoNew");
+      }
+      if (data === 4) {
+        this.$router.push("/Cannel");
+      }
     }
   },
   mounted() {
@@ -203,18 +238,18 @@ button {
   }
 }
 
-.cells_auto_fill_8 {
+.cells_auto_fill_8_1 {
   width: 100%;
-  // height: 1.4583rem;
-  height: 2.2916rem;
+  height: 1.4583rem;
+  // height: 2.2916rem;
 
   img {
     width: 100%;
-    // height: 1.4583rem;
-    height: 2.2916rem;
+    height: 1.4583rem;
+    // height: 2.2916rem;
   }
 }
-.cells_auto_fill_10 {
+.cells_auto_fill_10_1 {
   width: 100%;
   height: 2.2916rem;
 
