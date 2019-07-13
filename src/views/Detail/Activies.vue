@@ -1,14 +1,19 @@
 <template>
   <div class="sell">
-    <div v-for="(data,index) in dataList" :key="index" @click='popup' class="pad">
+    <div v-for="(data,index) in dataList" :key="index" @click='handleClick' class="pad">
      <span class="type">{{data.type_desc}}</span>
      <span class="title">{{data.title}}</span>
     </div>
-   <div class="popup" v-show="isShow">
-     <span class="cover"></span>
-    <div>11111111</div>
+   <div class="cover" v-if="isShow"></div>
+   <div class="popup" v-if="isShow">
+     <div class="disapper" @click="handleDisapper">
+       X
+     </div>
+     <div v-for="(data,index) in dataList" :key="index" class="con">
+       <span class="popup-type">{{data.type_desc}}</span>
+       <span class="popup-title">{{data.title}}</span>
+     </div>
    </div>
- 
   </div>
 </template>
 
@@ -19,12 +24,16 @@ export default {
   data(){
     return{
       dataList:[],
+      isShow:false,
     }
   },
   methods:{
-Popup(){
-
+handleClick(){
+  this.isShow =!this.isShow;
 },
+handleDisapper(){
+  this.isShow =false
+}
   },
   mounted(){
     axios({
@@ -61,22 +70,43 @@ Popup(){
       color: rgba(0,0,0,.87);
     }
   }
-.popup{
-  width:100%;
-  display: block !important;
-  height: 4rem;
-  background:#f60;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 10001;
-}
-  .popup::before{
-    content: '';
-    height: 6.75rem;
+   .cover{
+    height: 6.67rem;
     width: 100%;
     background: rgba(0, 0, 0, .5);
     position: fixed;
     top:0;
+    left: 0;
+    z-index: 1000
   }
+.popup{
+  width:100%;
+  display: block !important;
+  height: 5.1694rem;
+  background:#fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 10001;
+  border-radius: 0.2rem 0.2rem 0 0rem;
+  .disapper{
+    text-align: right;
+    font-size: .2rem;
+    color: #111;
+    margin:.2rem .2rem 0 0;
+  }
+.con{
+    margin-bottom: .3rem;
+    .popup-type{
+      color: #f56600;
+      margin: .2rem .05rem .2rem .35rem;
+      padding:0rem;
+    } 
+    .popup-title{
+      font-size: .14rem;
+      color: rgba(0,0,0,.87);
+    }
+}
+}
+ 
 </style>
