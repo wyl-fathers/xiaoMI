@@ -5,7 +5,7 @@
     </div>
 
     <ul class="nmb">
-      <li v-for="data in datalist" :key="data.path" @click="handledetail(data.path)">
+      <li v-for="data in datalist" :key="data.path" @click="handledetail(data)" >
         <img :src="data.image_url" />
         <div class="good">
           <div class="name">{{data.name}}</div>
@@ -35,9 +35,10 @@ export default {
     handlehome() {
       this.$router.push("/Best");
     },
-    handledetail() {
-      console.log(1111);
-      this.$router.push("");
+    handledetail(goods_id) {
+    var zzz =goods_id
+      console.log(zzz)
+      this.$router.push(`/Detail/${zzz.action.path}`);
     }
   },
 

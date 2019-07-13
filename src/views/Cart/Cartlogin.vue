@@ -1,7 +1,7 @@
 <template>
   <div class="cartlogin">
-    <span class="sleft">登录后享受更多优惠</span>
-    <span class="iconfont sright">去登陆 &#xe66e;</span>
+    <span class="sleft" >登录后享受更多优惠</span>
+    <span class="iconfont sright" @click="handlelogin()">去登陆 &#xe66e;</span>
   </div>
 </template>
 
@@ -9,7 +9,14 @@
 export default {
   data() {
     return {};
-  }
+  },
+
+  methods: {
+    handlelogin(){
+      this.$router.push("/User");
+    }
+  },
+
 };
 </script>
 

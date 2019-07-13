@@ -43,12 +43,16 @@ export default {
     }
   },
 
+ beforeMount() {
+    this.id = this.$route.params.commodity_id;
+  },
+
   mounted() {
     axios({
       method: "post",
       url: "/v1/miproduct/recommend",
       data:
-        "client_id=180100031051&channel_id=0&webp=1&product_id=10000085"
+        `client_id=180100031051&channel_id=0&webp=1&product_id=${this.id}`
     }).then(res => {
       this.imgList = res.data.data
       this.dataList = res.data.data.recommend_list;
@@ -107,7 +111,7 @@ img {
   flex-wrap: wrap;
   justify-content: space-around;
   width: 100%;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
   li {
     box-sizing: border-box;
     padding: 1% 0;

@@ -5,18 +5,23 @@ import Category from '@/views/Category.vue'
 import User from '@/views/User.vue'
 import Cart from '@/views/Cart.vue'
 import About from '@/views/About.vue'
+import Pay from '@/views/Cart/Pay.vue'
 import AboutList from '@/views/About/AboutList.vue'
-
 import Mpointsmall from '@/views/User/Mpointsmall.vue'
 import Services from '@/views/User/Services.vue'
+<<<<<<< HEAD
 
+=======
+>>>>>>> 75e54453331733e74ad3fbf164151324385917bf
 import OldtoNew from '@/views/Cannel/OldtoNew.vue'
 import Xiaomzc from '@/views/Cannel/Xiaomzc.vue'
-
 import Pass from '@/views/User/Pass.vue'
 import Login from '@/views/User/Login.vue'
 import Maplocation from '@/views/User/Maplocation.vue'
+<<<<<<< HEAD
 
+=======
+>>>>>>> 75e54453331733e74ad3fbf164151324385917bf
 import Cannel from '@/views/Cannel/Cannel.vue'
 import Detail from '@/views/Detail'
 
@@ -92,6 +97,11 @@ export default new Router({
       path: '/Services',
       component: Services
     },
+    
+    {
+      path: '/Pay',
+      component: Pay
+    },
     {
       path: '/Cannel',
       component: Cannel
@@ -104,7 +114,10 @@ export default new Router({
       path: '/OldtoNew',
       component: OldtoNew
     },
+<<<<<<< HEAD
 
+=======
+>>>>>>> 75e54453331733e74ad3fbf164151324385917bf
     {
       path: '/Pass',
       component: Pass
