@@ -100,26 +100,22 @@
                     />
                     <div class="eye_panel pwd-visiable">
                       <i class="eye pwd-eye">
-                        <svg
-                          width="100%"
-                          height="100%"
-                          version="1.1"
-                        > 
+                        <svg width="100%" height="100%" version="1.1">
                           <path class="eye_outer" d="M0 8 C6 0,14 0,20 8, 14 16,6 16, 0 8 z" />
                           <circle class="eye_inner" cx="10" cy="8" r="3" />
                         </svg>
                       </i>
-                    </div> 
+                    </div>
                     <div id="sms-code-panel" class="code_panel" style="display: block;">
                       <div class="send_ticket" href="javascript:;" id="getSMSCode">获取验证码</div>
                     </div>
                   </label>
                 </div>
-                 <!-- <div class="security_Controller" style="display: none;">
+                <!-- <div class="security_Controller" style="display: none;">
                   <label class="checkbox_area">
                     <input type="checkbox" id="trustSecurityController" class="checkbox" />使用安全控件
                   </label>
-                </div> -->
+                </div>-->
 
                 <!-- 错误信息 -->
                 <div class="err_tip">
@@ -368,32 +364,32 @@ export default {};
           font-size: 0.18rem;
         }
       }
-    //   .labelbox {
-    //     border-bottom: 1px solid #d3d3d3;
-    //     background-color: #fff;
-    //     display: box;
-    //     display: -webkit-box;
-    //     display: -moz-box;
-    //     -webkit-box-align: center;
-    //     box-align: center;
-    //     input {
-    //       -webkit-box-flex: 1;
-    //       -moz-box-flex: 1;
-    //       box-flex: 1;
-    //       flex-grow: 1;
-    //     }
-    //     .code_panel {
-    //       padding: 0.1rem 20px;
-    //       color: #333;
-    //       display: block;
-    //       overflow: hidden;
-    //       display: none;
-    //       .send_ticket {
-    //         cursor: pointer;
-    //         color: #2ea5e5;
-    //       }
-    //     }
-    //   }
+      //   .labelbox {
+      //     border-bottom: 1px solid #d3d3d3;
+      //     background-color: #fff;
+      //     display: box;
+      //     display: -webkit-box;
+      //     display: -moz-box;
+      //     -webkit-box-align: center;
+      //     box-align: center;
+      //     input {
+      //       -webkit-box-flex: 1;
+      //       -moz-box-flex: 1;
+      //       box-flex: 1;
+      //       flex-grow: 1;
+      //     }
+      //     .code_panel {
+      //       padding: 0.1rem 20px;
+      //       color: #333;
+      //       display: block;
+      //       overflow: hidden;
+      //       display: none;
+      //       .send_ticket {
+      //         cursor: pointer;
+      //         color: #2ea5e5;
+      //       }
+      //     }
+      //   }
     }
     .btns_bg {
       padding-top: 24px;

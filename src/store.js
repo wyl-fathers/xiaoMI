@@ -6,14 +6,20 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     NavIsShow: true,
-    hide:true,
-    goodslist:[]
+    hide: true,
+    goodslist: []
 
 
   },
   mutations: {
 
-    addshop(state,data){
+    addshop(state, data) {
+      for (var i in Array.from(state.goodslist)) {
+        if (Array.from(state.goodslist)[i].id == data.id) {
+          state.goodslist[i].number++
+          return
+        }
+      }
       state.goodslist.push(data)
     },
 
@@ -24,13 +30,13 @@ export default new Vuex.Store({
     //   var a =   Array.from(state.goodslist).indexOf(data)
     //   state.goodslist.splice(a,1)
     // },
-    delshop(state,sdata){
-      state.goodslist.splice(data,1)
+    delshop(state, data) {
+      state.goodslist.splice(data, 1)
     },
 
 
-    changdu(state,data){
-      state.hide =data
+    changdu(state, data) {
+      state.hide = data
     },
 
     NavShow(state, data) {

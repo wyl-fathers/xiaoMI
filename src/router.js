@@ -22,10 +22,10 @@ export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
-    {
-      path: '*',
-      redirect: '/Best'
-    },
+    // {
+    //   path: '*',
+    //   redirect: '/Best'
+    // },
 
     {
       path: '/',
@@ -75,7 +75,8 @@ export default new Router({
     {
 
       path: '/Detail/:commodity_id',
-      component: Detail
+      component: Detail,
+      name: 'haha'
     },
     {
       path: '/Cart',
@@ -89,7 +90,7 @@ export default new Router({
       path: '/Services',
       component: Services
     },
-    
+
     {
       path: '/Pay',
       component: Pay

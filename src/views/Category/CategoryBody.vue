@@ -21,7 +21,7 @@
                 v-for=" ( ccc, index1 ) in item.body.items"
                 :key="ccc.action.path"
                 :class="'div_'+indexc+index+index1+' '+'lzcOwn'"
-                @click="check(ccc)"
+                @click="check(ccc,ccc.img_url)"
               >
                 <img :src="ccc.img_url" :class="'box'+index+'img_'+index1" v-lazy="ccc.img_url" />
                 <p v-if="ccc.product_name">{{ccc.product_name}}</p>
@@ -49,9 +49,14 @@ export default {
       aaa: 0
     };
   },
+
   methods: {
-    check(data) {
-      this.$router.push(`/Detail/${data.action.path}`);
+    check(data, src) {
+      this.$router.push({
+        name: "haha",
+        params: { commodity_id: data.action.path, src }
+      });
+      // this.$router.push(`/Detail/${data.action.path}`);
     }
   },
   mounted() {
@@ -84,7 +89,7 @@ export default {
 <style lang="scss" >
 .mint-indexsection-index {
   font-size: 0.16rem;
-  text-align: center; 
+  text-align: center;
 }
 ul.mint-indexlist-content {
   margin-left: 0.76rem;

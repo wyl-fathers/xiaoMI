@@ -5,7 +5,7 @@
       <img />
       <div class="gright">
         <div class="name">{{data.name}}</div>
-        <span>售价：  {{data.price}}元</span>
+        <span>售价： {{data.price}}元</span>
         <div class="num">
           <div class="del" @click="handleDelClick(data)">-</div>
           <div class="n">{{data.number}}</div>
@@ -35,8 +35,17 @@ export default {
       datalist: []
     };
   },
+  updated() {
+    this.datalist.length
+      ? this.$store.commit("changdu", false)
+      : this.$store.commit("changdu", true);
+  },
   mounted() {
-    this.datalist =this.$store.state.goodslist
+    this.datalist.length
+      ? this.$store.commit("changdu", false)
+      : this.$store.commit("changdu", true);
+
+    this.datalist = this.$store.state.goodslist;
   },
   methods: {
     handleDelClick(data) {
@@ -49,15 +58,15 @@ export default {
     handledelAll(index) {
       console.log(index);
       console.log(this.datalist);
-      this.datalist.splice(index, 1)
-      this.$store.commit('delshop',index)
-      this.datalist.length?this.$store.commit('changdu',false):this.$store.commit('changdu',true);
-
+      this.datalist.splice(index, 1);
+      this.$store.commit("delshop", index);
+      this.datalist.length
+        ? this.$store.commit("changdu", false)
+        : this.$store.commit("changdu", true);
     },
-handlePay(){
-    this.$router.push("/Pay");
-}
-
+    handlePay() {
+      this.$router.push("/Pay");
+    }
   }
 
   //   mounted() {
@@ -76,11 +85,11 @@ handlePay(){
 * {
   margin: 0;
   padding: 0;
-  box-sizing:border-box;
+  box-sizing: border-box;
 }
 
-.cartbuy{
-    background-color:#f5f5f5;
+.cartbuy {
+  background-color: #f5f5f5;
 }
 
 .goods {
@@ -90,7 +99,7 @@ handlePay(){
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color:#fff;
+  background-color: #fff;
   .choose {
     width: 0.3125rem;
     height: 0.9375rem;
@@ -133,10 +142,10 @@ handlePay(){
         width: 0.3125rem;
         border: 0.01rem solid #ccc;
         float: left;
-        background-color:#f5f5f5;
-        font-size:0.30rem;
-        text-align:center;
-        line-height:0.28rem;
+        background-color: #f5f5f5;
+        font-size: 0.3rem;
+        text-align: center;
+        line-height: 0.28rem;
       }
       .n {
         height: 0.3125rem;
@@ -153,10 +162,10 @@ handlePay(){
         width: 0.3125rem;
         border: 0.01rem solid #ccc;
         float: left;
-        background-color:#f5f5f5;
-        font-size:0.31rem;
-        text-align:center;
-        line-height:0.26rem;
+        background-color: #f5f5f5;
+        font-size: 0.31rem;
+        text-align: center;
+        line-height: 0.26rem;
       }
 
       .delall {
@@ -176,12 +185,11 @@ handlePay(){
   height: 0.5208rem;
   width: 100%;
   display: flex;
-  position:fixed;
-  bottom:0;
+  position: fixed;
+  bottom: 0;
   .price {
     flex: 1;
-        background-color:#fff;
-
+    background-color: #fff;
   }
   .gohome {
     flex: 1;
