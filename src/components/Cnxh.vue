@@ -37,7 +37,11 @@ export default {
     },
     handledetail(goods_id) {
     var zzz =goods_id
+<<<<<<< HEAD
       console.log(zzz)
+=======
+      // console.log(zzz)
+>>>>>>> fcf60af4e627ecee4111ad7f8e41ff9932557baa
       this.$router.push(`/Detail/${zzz.action.path}`);
     }
   },
@@ -51,7 +55,7 @@ export default {
     }).then(res => {
       this.img1 = res.data.data.header.body.items[0];
       this.datalist = res.data.data.recom_list;
-      console.log(this.datalist);
+      // console.log(this.datalist);
     });
   }
 };

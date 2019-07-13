@@ -23,16 +23,31 @@ export default {
       wyl:true
 
     };
+<<<<<<< HEAD
   },
   computed: {
     ...mapState(['hide']),
   },
+=======
+  },
+  computed: {
+    ...mapState(['hide']),
+  },
+>>>>>>> fcf60af4e627ecee4111ad7f8e41ff9932557baa
 
   beforeMount() {
     this.$store.state.NavIsShow=false
   },
 
+<<<<<<< HEAD
 
+=======
+  updated(){
+        this.$store.state.NavIsShow=false
+
+  }
+,
+>>>>>>> fcf60af4e627ecee4111ad7f8e41ff9932557baa
 
   components: {
     HeaderDown,
