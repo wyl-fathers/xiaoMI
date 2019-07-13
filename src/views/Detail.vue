@@ -121,7 +121,7 @@ export default {
         price,
         number:1,
         id:this.id,
-        img_url:this.dataList[1].img_url
+        img_url:this.dataList[0].img_url
       }
        this.$store.commit('addshop',toCart)
       // console.log(toCart)

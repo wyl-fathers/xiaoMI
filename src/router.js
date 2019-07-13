@@ -15,6 +15,8 @@ import Pass from '@/views/User/Pass.vue'
 import Maplocation from '@/views/User/Maplocation.vue'
 import Cannel from '@/views/Cannel/Cannel.vue'
 import Detail from '@/views/Detail'
+import Shoukuan from '@/views/Cart/Shoukuan.vue'
+
 
 Vue.use(Router)
 
@@ -92,7 +94,14 @@ export default new Router({
     
     {
       path: '/Pay',
-      component: Pay
+      component: Pay,
+      name: 'Pay'
+    },
+
+    {
+      path: '/Shoukuan',
+      component: Shoukuan,
+      name: 'Shoukuan'
     },
     {
       path: '/Cannel',

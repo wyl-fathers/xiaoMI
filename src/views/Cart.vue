@@ -32,7 +32,11 @@ export default {
     this.$store.state.NavIsShow=false
   },
 
+  updated(){
+        this.$store.state.NavIsShow=false
 
+  }
+,
 
   components: {
     HeaderDown,

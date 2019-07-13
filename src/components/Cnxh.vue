@@ -37,7 +37,7 @@ export default {
     },
     handledetail(goods_id) {
     var zzz =goods_id
-      console.log(zzz)
+      // console.log(zzz)
       this.$router.push(`/Detail/${zzz.action.path}`);
     }
   },
@@ -51,7 +51,7 @@ export default {
     }).then(res => {
       this.img1 = res.data.data.header.body.items[0];
       this.datalist = res.data.data.recom_list;
-      console.log(this.datalist);
+      // console.log(this.datalist);
     });
   }
 };
