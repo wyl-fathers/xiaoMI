@@ -1,5 +1,6 @@
 <template>
   <div>
+    <HeaderDown class="go2"><span>服务</span></HeaderDown>
     <div class="servicesNav">
       <h4>自助服务</h4>
       <div v-for="(data,index) in iconList" :key="index">
@@ -47,9 +48,15 @@
   </div>
 </template>
 <script>
-import headerDown from "@/components/HeaderDown.vue";
+import HeaderDown from "@/components/HeaderDown.vue";
 import axios from "axios";
 export default {
+  beforeMount() {
+    this.$store.commit("NavHide", false)
+    },
+  beforeDestroy() {
+    this.$store.commit("NavHide", true);
+    },
   data() {
     return {
       iconList: []
@@ -65,12 +72,17 @@ export default {
       this.iconList = resp.data.data.service_icon_list.data_json;
     });
   },
-  components: { headerDown },
+  components: { HeaderDown },
   methods: {}
 };
 </script>
 
 <style lang="scss" scoped>
+.go2{
+  display: flex;
+  left: .3rem;
+  top: .35rem
+}
 .servicesNav {
   border-bottom: 0.08rem solid #f6f6f6;
   h4 {

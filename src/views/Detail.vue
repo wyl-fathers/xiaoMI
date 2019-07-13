@@ -11,8 +11,10 @@
       </div>
     </SwiperDetail>
     <div class="msg">
-      <h1 v-if="productName">{{productName}}</h1>
-      <div class="description" v-if="productDesc" v-html="productDesc">{{productDesc}}</div>
+      <h1 class="productName" v-if="productName">{{productName}}</h1>
+      <div class="description" v-if="productDesc" v-html="productDesc">
+        {{productDesc}}
+        </div>
       <h1 class="price" v-if="marketPrice">￥{{marketPrice}}</h1>
     </div>
     <DetailSwiper
@@ -27,16 +29,37 @@
         :key="data.name"
         v-if="data.icon"
       >
+<<<<<<< HEAD
         <img :src="data.icon" v-lazy="data.icon" />
         <div class="parameterName">{{data.name}}</div>
         <div class="parameterValue">{{data.value}}</div>
+=======
+        <img :src="data.icon" v-lazy="data.icon"/>
+        <div class="parameterName">{{data.top_title}}</div>
+        <div class="parameterValue">{{data.bottom_title}}</div>
+>>>>>>> 7cd7db8d6a3127497b161dc6125c65607d29ddaa
       </div>
     </DetailSwiper>
     <Activies></Activies>
     <div class="section">
-      <div class="info"></div>
-      <div class="adds"></div>
-      <div class="serive"></div>
+      <div class="info" v-if="goodsName">
+        <span class="checked">已选</span>
+        {{goodsName}}
+        </div>
+      <div class="adds">
+        <span class="destination">送至</span>
+        北京市&nbsp;东城区&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="have">有现货</span>
+        </div>
+      <div class="serive">
+        <img src="../../public/img/server.png" alt="">
+        <span>小米自营</span>
+        <img src="../../public/img/server.png" alt="">
+        <span>小米发货</span>
+        <img src="../../public/img/server.png" alt="">
+        <span>七天无理由退货</span>
+
+      </div>
     </div>
     <div class="related" v-if="relatedRecommend">
       <h2>{{relatedRecommend.title}}</h2>
@@ -95,6 +118,7 @@ export default {
       productName: null,
       productDesc: null,
       marketPrice: null,
+      goodsName:null,
       parametersList: [],
       relatedRecommend: null,
       relatedRecommendData: [],
@@ -123,12 +147,21 @@ export default {
       var toCart = {
         name,
         price,
+<<<<<<< HEAD
         number: 1,
         id: this.id,
         img_url: this.dataList[0].img_url
       };
       this.$store.commit("addshop", toCart);
       console.log(toCart);
+=======
+        number:1,
+        id:this.id,
+        img_url:this.dataList[0].img_url
+      }
+       this.$store.commit('addshop',toCart)
+      // console.log(toCart)
+>>>>>>> 7cd7db8d6a3127497b161dc6125c65607d29ddaa
     }
   },
   beforeMount() {
@@ -146,13 +179,20 @@ export default {
     }).then(resp => {
       this.dataList = resp.data.data.goods_info;
 
+<<<<<<< HEAD
       // if(!dataList.length){
 
       // }
+=======
+// if(!dataList.length){
+
+// }
+>>>>>>> 7cd7db8d6a3127497b161dc6125c65607d29ddaa
 
       this.productName = resp.data.data.product_info.name;
       this.productDesc = resp.data.data.product_info.product_desc;
       this.marketPrice = resp.data.data.goods_info[0].market_price;
+      this.goodsName = resp.data.data.goods_info[0].name;
       if (resp.data.data.goods_info[0].class_parameters.list) {
         this.parametersList =
           resp.data.data.goods_info[0].class_parameters.list;
@@ -170,8 +210,8 @@ export default {
       for (var i in this.imgList) {
         this.lzc = this.imgList[i];
       }
-      console.log(resp.data.data);
-      console.log(resp.data.data.goods_info[0]);
+      // console.log(resp.data.data);
+      console.log('这数据不对劲啊',resp.data.data.goods_info[0]);
     });
   },
   beforeDestroy() {
@@ -187,6 +227,18 @@ export default {
   img {
     width: 100%;
     height: auto;
+  }
+}
+.msg{
+  .productName{
+    font-weight: 500;
+    margin-left: 0.16575rem;
+  }
+  .price{
+    color: #ff6700;
+    font-weight: 500;
+    margin-left: 0.16575rem;
+
   }
 }
 .description {
@@ -217,7 +269,57 @@ export default {
   width: 3.4185rem;
   height: 1.1548rem;
   background: #e5e5e5;
+<<<<<<< HEAD
   border-radius: 0.1rem;
+=======
+  border-radius: .1rem;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  .info{
+    height: .3849rem;
+    line-height: .3849rem;
+    width: 100%;
+    text-indent: .2rem;
+    font-size: .14rem;
+    border-bottom: 1px solid #ccc;
+    .checked{
+      color: #999;
+      margin-right: .1rem;
+    }
+  }
+ .adds{
+    height: .3849rem;
+    line-height: .3849rem;
+    width: 100%;
+    text-indent: .2rem;
+    font-size: .14rem;
+    border-bottom: 1px solid #ccc;
+    .destination{
+      color: #999;
+      margin-right: .1rem;
+    }
+    .have{
+      color:#ff6700;
+    }
+  }
+    .serive{
+    height: .3849rem;
+    line-height: .3849rem;
+    width: 100%;
+    text-indent: .2rem;
+    font-size: .14rem;
+    img{
+      width: .1012rem;
+      height: .1012rem;
+    }
+    span{
+      color: #999;
+      margin:0 .1rem 0 .03rem;
+      font-size: .1rem;
+    }
+  }
+
+>>>>>>> 7cd7db8d6a3127497b161dc6125c65607d29ddaa
 }
 .related {
   height: 2rem;

@@ -3,7 +3,6 @@
     <Go class="go2"></Go>
     <div class="layout">
       <div>
-        
         <div class="lgnheader">
           <div class="header_tit t_c">
             <em id="custom_display_1" class="milogo">
@@ -70,7 +69,7 @@
                       type="tel"
                       name="user"
                       id="username"
-                      placeholder="账号"
+                      placeholder="邮箱/手机号码/小米ID"
                       _type="tel"
                     />
                     <div id="btn-clear-link" class="clear_link_panel">
@@ -84,7 +83,7 @@
                   <label class="labelbox pwd_panel c_b">
                     <input
                       class="item_account"
-                      type="password"
+                      type="number"
                       placeholder="密码"
                       autocomplete="off"
                       id="pwd"
@@ -93,27 +92,22 @@
                     />
                     <!-- <input
                       class="item_account"
-                      type="text"
+                      type="password"
                       placeholder="密码"
                       autocomplete="off"
                       id="visiablePwd"
                       name="visiablepwd"
                       style="display:none"
                     />-->
-                    <!-- <div class="eye_panel pwd-visiable">
+                    <div class="eye_panel pwd-visiable">
                       <i class="eye pwd-eye">
                         <svg width="100%" height="100%" version="1.1">
                           <path class="eye_outer" d="M0 8 C6 0,14 0,20 8, 14 16,6 16, 0 8 z" />
                           <circle class="eye_inner" cx="10" cy="8" r="3" />
                         </svg>
                       </i>
-<<<<<<< HEAD
                     </div>
-                    <div id="sms-code-panel" class="code_panel" style="display: block;">
-=======
-                    </div>-->
                     <!-- <div id="sms-code-panel" class="code_panel" style="display: block;">
->>>>>>> 7cd7db8d6a3127497b161dc6125c65607d29ddaa
                       <div class="send_ticket" href="javascript:;" id="getSMSCode">获取验证码</div>
                     </div>-->
                   </label>
@@ -132,7 +126,7 @@
                   </div>
                 </div>
                 <div class="btns_bg">
-                  <input class="btnadpt" id="login-button" type="submit" value="立即注册" />
+                  <input class="btnadpt" id="login-button" type="submit" value="登录" />
                   <span
                     id="custom_display_8"
                     class="sns-default-container sns_default_container"
@@ -142,19 +136,19 @@
                 <div class="other_panel clearfix">
                   <span id="custom_display_256" class="sms_link">
                     <router-link
-                      to="/login"
+                      to="/pass"
                       tag="div"
                       class="btnadpt btn_gray login_type_link"
                       id="ChangeLoginType"
-                    >登录</router-link>
+                    >立即注册</router-link>
                   </span>
-                  <!-- <div class="reverse">
+                  <div class="reverse">
                     <div class="n_links_area" id="custom_display_64" style="display: none;">
                       <div class="outer-link">立即注册</div>
                       <span>|</span>
                       <div class="outer-link">忘记密码？</div>
                     </div>
-                  </div>-->
+                  </div>
                   <!-- 其他登录方式 s -->
                   <div
                     style="display: block;"
@@ -245,21 +239,20 @@
 <script>
 import Go from '@/components/Go2-1.vue';
 export default {
-  components: { Go },
   methods: {},
-  
+  components:{Go},
   beforeMount() {
     this.$store.commit("NavHide", false)
     },
-        updated(){
+    updated(){
           this.$store.commit("NavHide", false)
 
     },
-
   beforeDestroy() {
     this.$store.commit("NavHide", true);
     }
   };
+
 </script>
 
 
@@ -429,34 +422,6 @@ export default {
           font-size: 0.18rem;
         }
       }
-<<<<<<< HEAD
-      //   .labelbox {
-      //     border-bottom: 1px solid #d3d3d3;
-      //     background-color: #fff;
-      //     display: box;
-      //     display: -webkit-box;
-      //     display: -moz-box;
-      //     -webkit-box-align: center;
-      //     box-align: center;
-      //     input {
-      //       -webkit-box-flex: 1;
-      //       -moz-box-flex: 1;
-      //       box-flex: 1;
-      //       flex-grow: 1;
-      //     }
-      //     .code_panel {
-      //       padding: 0.1rem 20px;
-      //       color: #333;
-      //       display: block;
-      //       overflow: hidden;
-      //       display: none;
-      //       .send_ticket {
-      //         cursor: pointer;
-      //         color: #2ea5e5;
-      //       }
-      //     }
-      //   }
-=======
       .labelbox {
         border-bottom: 1px solid #d3d3d3;
         background-color: #fff;
@@ -485,7 +450,6 @@ export default {
           }
         }
       }
->>>>>>> 7cd7db8d6a3127497b161dc6125c65607d29ddaa
     }
     .btns_bg {
       padding-top: 24px;
@@ -514,6 +478,23 @@ export default {
           margin-top: 10px;
           border: 1px solid #d3d3d3;
           color: #000;
+        }
+      }
+      div.reverse {
+        height: 100%;
+        display: box;
+        display: -webkit-box;
+        display: -moz-box;
+        -webkit-box-orient: vertical;
+        box-orient: vertical;
+        -webkit-box-direction: reverse;
+        box-direction: reverse;
+        .n_links_area {
+          text-align: center;
+          div {
+            padding: 0 9px;
+            font-size: 0.16rem;
+          }
         }
       }
       .other_login_type {
@@ -572,11 +553,25 @@ export default {
 .icon_type .icon_default_weixin {
   background-position: -84px 0;
 }
+.eye {
+  width: 20px;
+  height: 16px;
+  display: block;
+  .eye_outer {
+    fill: #4d4d4d;
+  }
+  .eye_inner {
+    fill: #4d4d4d;
+    stroke: #fff;
+    stroke-width: 2;
+    stroke-opacity: 0.8;
+  }
+}
 .n-footer {
   line-height: 1.5;
   text-align: center;
   font-size: 0.14rem;
-  margin-top: 0.1rem;
+  margin-top: .1rem;
   height: 0.9rem;
   .nf-link-area {
     color: #9b9b9b;
@@ -607,4 +602,5 @@ export default {
     }
   }
 }
+
 </style>
