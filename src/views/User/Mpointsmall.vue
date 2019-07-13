@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <HeaderDown class="go2"><span>会员中心</span></HeaderDown>
     <div class="text">
       <p class="fz-m">请前往小米商城App查看会员福利</p>
     </div>
@@ -9,14 +10,25 @@
   </div>
 </template>
 <script>
-import headerDown from "@/components/HeaderDown.vue";
+import HeaderDown from "@/components/HeaderDown.vue";
 export default {
-  components: { headerDown },
+  beforeMount() {
+    this.$store.commit("NavHide", false)
+    },
+  beforeDestroy() {
+    this.$store.commit("NavHide", true);
+    },
+  components: { HeaderDown },
   methods: {}
 };
 </script>
 
 <style lang="scss" scoped>
+.go2{
+  display: flex;
+  left: .3rem;
+  top: .35rem
+}
 .text {
   padding: 0.75rem 0.2rem 0.5rem;
   .fz-m {

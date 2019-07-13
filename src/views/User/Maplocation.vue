@@ -1,5 +1,6 @@
 <template>
   <div>
+    <HeaderDown class="go2"><span>选择城市</span></HeaderDown>
     <mt-index-list ref="ccc">
       <mt-index-section :index="data.index" v-for="data in datalist" :key="data.index">
         <div
@@ -18,10 +19,17 @@
 import Vue from "vue";
 import axios from "axios";
 import { IndexList, IndexSection } from "mint-ui";
-
+import HeaderDown from "@/components/HeaderDown.vue";
 Vue.component(IndexList.name, IndexList);
 Vue.component(IndexSection.name, IndexSection);
 export default {
+  beforeMount() {
+    this.$store.commit("NavHide", false)
+    },
+  beforeDestroy() {
+    this.$store.commit("NavHide", true);
+    },
+  components: { HeaderDown },
   data() {
     return {
       datalist: {}
@@ -78,6 +86,11 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.go2{
+  display: flex;
+  left: .3rem;
+  top: .35rem
+}
 p.mint-indexsection-index  {
     font-size: 0.22rem;
     margin: 0;

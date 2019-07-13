@@ -10,14 +10,12 @@ import AboutList from '@/views/About/AboutList.vue'
 import Mpointsmall from '@/views/User/Mpointsmall.vue'
 import Services from '@/views/User/Services.vue'
 
-
 import OldtoNew from '@/views/Cannel/OldtoNew.vue'
 import Xiaomzc from '@/views/Cannel/Xiaomzc.vue'
 
 import Pass from '@/views/User/Pass.vue'
+import Login from '@/views/User/Login.vue'
 import Maplocation from '@/views/User/Maplocation.vue'
-
-
 
 import Cannel from '@/views/Cannel/Cannel.vue'
 import Detail from '@/views/Detail'
@@ -54,7 +52,6 @@ export default new Router({
           path: '*',
           redirect: '/About'
         }
-
 
       ]
     },
@@ -108,14 +105,13 @@ export default new Router({
       component: OldtoNew
     },
 
-
-
-
-
-
     {
       path: '/Pass',
       component: Pass
+    },
+    {
+      path: '/Login',
+      component: Login
     },
     {
       path: '/Maplocation',
