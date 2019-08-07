@@ -36,36 +36,36 @@
 </template>
 
 <script>
-import { Lazyload } from "mint-ui";
+import { Lazyload } from 'mint-ui'
 
-import axios from "axios";
+import axios from 'axios'
 export default {
-  data() {
+  data () {
     return {
       dataList: [],
       src: null
-    };
-  },
-  methods: {
-    toDetail(data) {
-      this.$router.push(`/Detail/${data}`);
     }
   },
-  mounted() {
+  methods: {
+    toDetail (data) {
+      this.$router.push(`/Detail/${data}`)
+    }
+  },
+  mounted () {
     axios({
-      method: "post",
-      url: "/v1/home/page",
+      method: 'post',
+      url: '/v1/home/page',
       data:
-        "client_id=180100031051&channel_id=0&webp=1&page_type=activity&page_id=9770"
+        'client_id=180100031051&channel_id=0&webp=1&page_type=activity&page_id=9770'
     }).then(resp => {
-      this.src = resp.data.data.data.sections[0].body.items[0].img_url;
+      this.src = resp.data.data.data.sections[0].body.items[0].img_url
       this.dataList = resp.data.data.data.sections.filter((el, index) => {
-        return index > 0;
-      });
-      console.log(resp.data.data.data);
-    });
+        return index > 0
+      })
+      console.log(resp.data.data.data)
+    })
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

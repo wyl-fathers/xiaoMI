@@ -34,40 +34,40 @@
 </template>
 
 <script>
-import axios from "axios";
-import Swi from "@/components/Swiper.vue";
+import axios from 'axios'
+import Swi from '@/components/Swiper.vue'
 
-import { Lazyload } from "mint-ui";
+import { Lazyload } from 'mint-ui'
 
 export default {
-  data() {
+  data () {
     return {
       dataList: [],
       shopList: []
-    };
-  },
-  methods: {
-    toDetail(data) {
-      this.$router.push(`/Detail/${data}`);
     }
   },
-  mounted() {
+  methods: {
+    toDetail (data) {
+      this.$router.push(`/Detail/${data}`)
+    }
+  },
+  mounted () {
     axios({
-      method: "post",
-      url: "/v1/home/page",
+      method: 'post',
+      url: '/v1/home/page',
       data:
-        "client_id=180100031051&channel_id=0&webp=1&page_type=tab&page_id=1861"
+        'client_id=180100031051&channel_id=0&webp=1&page_type=tab&page_id=1861'
     }).then(resp => {
-      this.dataList = resp.data.data.data.sections[0].body.items;
+      this.dataList = resp.data.data.data.sections[0].body.items
       this.shopList = resp.data.data.data.sections.filter((el, index) => {
-        return index > 0;
-      });
-    });
+        return index > 0
+      })
+    })
   },
   components: {
     Swi
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

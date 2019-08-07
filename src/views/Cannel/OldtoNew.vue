@@ -20,28 +20,28 @@
 </template>
 
 <script>
-import { MessageBox } from "mint-ui";
-import Go from "@/components/Go2-1.vue";
+import { MessageBox } from 'mint-ui'
+import Go from '@/components/Go2-1.vue'
 export default {
-  beforeMount() {
-    this.$store.commit("NavHide", false);
+  beforeMount () {
+    this.$store.commit('NavHide', false)
   },
   methods: {
-    check() {
+    check () {
       MessageBox({
-        title: "没了老铁",
-        message: "王永乐生吃DOM树",
+        title: '没了老铁',
+        message: '王永乐生吃DOM树',
         showCancelButton: true
-      });
+      })
     }
   },
-  beforeDestroy() {
-    this.$store.commit("NavHide", true);
+  beforeDestroy () {
+    this.$store.commit('NavHide', true)
   },
   components: {
     Go
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

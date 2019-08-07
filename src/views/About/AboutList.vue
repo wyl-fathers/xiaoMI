@@ -59,79 +59,79 @@
 </template>
 
 <script>
-import axios from "axios";
-import Cnxh from "@/components/Cnxh.vue";
-import HeaderDown from "@/components/HeaderDown.vue";
+import axios from 'axios'
+import Cnxh from '@/components/Cnxh.vue'
+import HeaderDown from '@/components/HeaderDown.vue'
 
 export default {
-  data() {
+  data () {
     return {
       icon: `\ue66f  搜索商品名称 `,
       searchname: null,
       dataList: null,
       input: ``,
       searchList: null
-    };
-  },
-  methods: {
-    toDetail(el) {
-      this.$router.push(`/Detail/${el}`);
-    },
-
-    check(el) {
-      this.$router.push(`/About/list${el}`);
-      location.reload();
-      // this.redirect(`/About/list${el}`);
-    },
-    sousuo() {
-      this.searchList = null;
-      axios({
-        method: "post",
-        url: "/v1/hisearch/suggestion_v3",
-        data: `client_id=180100031051&channel_id=0&webp=1&query=${this.input}`
-      }).then(resp => {
-        console.log(resp.data);
-        console.log(resp.data.data);
-        if (
-          resp.data.data == "null" ||
-          resp.data.data == null ||
-          resp.data.data == "undefined" ||
-          resp.data.data.data == "undefined" ||
-          resp.data.data.list == undefined
-        ) {
-          return;
-        } else {
-          this.searchList = resp.data.data.list;
-          console.log(this.searchList);
-        }
-      });
-    },
-    tosearchlist(data) {
-      // console.log(data);
-      this.$router.push(`/About/list${data}`);
-      location.reload();
-    },
-    SS() {
-      console.log(this.input);
-      console.log(11111111);
     }
   },
-  mounted() {
-    this.searchname = this.$route.params.searchname;
+  methods: {
+    toDetail (el) {
+      this.$router.push(`/Detail/${el}`)
+    },
+
+    check (el) {
+      this.$router.push(`/About/list${el}`)
+      location.reload()
+      // this.redirect(`/About/list${el}`);
+    },
+    sousuo () {
+      this.searchList = null
+      axios({
+        method: 'post',
+        url: '/v1/hisearch/suggestion_v3',
+        data: `client_id=180100031051&channel_id=0&webp=1&query=${this.input}`
+      }).then(resp => {
+        console.log(resp.data)
+        console.log(resp.data.data)
+        if (
+          resp.data.data == 'null' ||
+          resp.data.data == null ||
+          resp.data.data == 'undefined' ||
+          resp.data.data.data == 'undefined' ||
+          resp.data.data.list == undefined
+        ) {
+
+        } else {
+          this.searchList = resp.data.data.list
+          console.log(this.searchList)
+        }
+      })
+    },
+    tosearchlist (data) {
+      // console.log(data);
+      this.$router.push(`/About/list${data}`)
+      location.reload()
+    },
+    SS () {
+      console.log(this.input)
+      console.log(11111111)
+    }
+  },
+  mounted () {
+    this.searchname = this.$route.params.searchname
     axios({
-      method: "post",
-      url: "/v1/hisearch/query_v3",
+      method: 'post',
+      url: '/v1/hisearch/query_v3',
       data: `client_id=180100031051&channel_id=0&webp=1&query=${this.searchname}&version=2&page_index=1&page_size=20`
     }).then(resp => {
-      console.log(resp.data.data.list_v2);
-      this.dataList = resp.data.data.list_v2;
-    });
+      console.log(resp.data.data.list_v2)
+      this.dataList = resp.data.data.list_v2
+    })
   },
   components: {
     HeaderDown,
     Cnxh
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

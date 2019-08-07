@@ -10,17 +10,17 @@
   </div>
 </template>
 <script>
-import HeaderDown from "@/components/HeaderDown.vue";
+import HeaderDown from '@/components/HeaderDown.vue'
 export default {
-  beforeMount() {
-    this.$store.commit("NavHide", false)
-    },
-  beforeDestroy() {
-    this.$store.commit("NavHide", true);
-    },
+  beforeMount () {
+    this.$store.commit('NavHide', false)
+  },
+  beforeDestroy () {
+    this.$store.commit('NavHide', true)
+  },
   components: { HeaderDown },
   methods: {}
-};
+}
 </script>
 
 <style lang="scss" scoped>

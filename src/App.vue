@@ -9,20 +9,20 @@
 </template>
 
 <script>
-import Nav1 from "@/components/Nav.vue";
+import Nav1 from '@/components/Nav.vue'
 // import Head from "@/views/Head.vue";
 // import Best from '@/views/Best.vue'
-import BackTop from "@/components/Go2top";
-import { mapState } from "vuex";
+import BackTop from '@/components/Go2top'
+import { mapState } from 'vuex'
 
 export default {
-  data() {
+  data () {
     return {
       isShow: true
-    };
+    }
   },
   computed: {
-    ...mapState(["NavIsShow"])
+    ...mapState(['NavIsShow'])
   },
   components: {
     // Head,
@@ -30,7 +30,7 @@ export default {
     Nav1,
     BackTop
   }
-};
+}
 </script>
 
 <style lang="scss" >

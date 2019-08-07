@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :key="id">
     <Go></Go>
     <SwiperDetail v-if="dataList.length" :key="dataList.length">
       <div
@@ -12,9 +12,7 @@
     </SwiperDetail>
     <div class="msg">
       <h1 class="productName" v-if="productName">{{productName}}</h1>
-      <div class="description" v-if="productDesc" v-html="productDesc">
-        {{productDesc}}
-        </div>
+      <div class="description" v-if="productDesc" v-html="productDesc">{{productDesc}}</div>
       <h1 class="price" v-if="marketPrice">￥{{marketPrice}}</h1>
     </div>
     <DetailSwiper
@@ -29,15 +27,9 @@
         :key="data.name"
         v-if="data.icon"
       >
-<<<<<<< HEAD
         <img :src="data.icon" v-lazy="data.icon" />
-        <div class="parameterName">{{data.name}}</div>
-        <div class="parameterValue">{{data.value}}</div>
-=======
-        <img :src="data.icon" v-lazy="data.icon"/>
         <div class="parameterName">{{data.top_title}}</div>
         <div class="parameterValue">{{data.bottom_title}}</div>
->>>>>>> 7cd7db8d6a3127497b161dc6125c65607d29ddaa
       </div>
     </DetailSwiper>
     <Activies></Activies>
@@ -45,20 +37,19 @@
       <div class="info" v-if="goodsName">
         <span class="checked">已选</span>
         {{goodsName}}
-        </div>
+      </div>
       <div class="adds">
         <span class="destination">送至</span>
         北京市&nbsp;东城区&nbsp;&nbsp;&nbsp;&nbsp;
         <span class="have">有现货</span>
-        </div>
+      </div>
       <div class="serive">
-        <img src="../../public/img/server.png" alt="">
+        <img src="../../public/img/server.png" alt />
         <span>小米自营</span>
-        <img src="../../public/img/server.png" alt="">
+        <img src="../../public/img/server.png" alt />
         <span>小米发货</span>
-        <img src="../../public/img/server.png" alt="">
+        <img src="../../public/img/server.png" alt />
         <span>七天无理由退货</span>
-
       </div>
     </div>
     <div class="related" v-if="relatedRecommend">
@@ -98,7 +89,7 @@
       </div>
       <a @click="handleClick(productName,marketPrice,)">加入购物车</a>
     </div>
-    <Recommend></Recommend>
+    <Recommend @lzc="lrl($event)"></Recommend>
   </div>
 </template>
 
@@ -118,7 +109,7 @@ export default {
       productName: null,
       productDesc: null,
       marketPrice: null,
-      goodsName:null,
+      goodsName: null,
       parametersList: [],
       relatedRecommend: null,
       relatedRecommendData: [],
@@ -134,9 +125,15 @@ export default {
     Go,
     Recommend
   },
-  props: ["commodity_id", "src"],
-
   methods: {
+    lrl(data) {
+      this.id = data;
+      // console.log(this.id);
+      this.lsj(this.id, () => {
+        document.documentElement.scrollTop = 0 + "px";
+      });
+    },
+
     handleHome() {
       this.$router.push("/Best");
     },
@@ -147,74 +144,68 @@ export default {
       var toCart = {
         name,
         price,
-<<<<<<< HEAD
         number: 1,
         id: this.id,
         img_url: this.dataList[0].img_url
       };
       this.$store.commit("addshop", toCart);
-      console.log(toCart);
-=======
-        number:1,
-        id:this.id,
-        img_url:this.dataList[0].img_url
-      }
-       this.$store.commit('addshop',toCart)
       // console.log(toCart)
->>>>>>> 7cd7db8d6a3127497b161dc6125c65607d29ddaa
+    },
+    lsj(id, callback) {
+      axios({
+        method: "post",
+        url: "/v1/miproduct/view",
+        data: `client_id=180100031051&channel_id=0&webp=1&commodity_id=${id}&pid=${id}`
+      }).then(resp => {
+        // console.log(resp.data.data.product_info, "asdsadasdasdsa");
+        this.dataList = resp.data.data.goods_info;
+        this.productName = resp.data.data.product_info.name;
+        // console.log(this.productName, "zxczxc11111");
+
+        this.productDesc = resp.data.data.product_info.product_desc;
+        this.marketPrice = resp.data.data.goods_info[0].market_price;
+        this.goodsName = resp.data.data.goods_info[0].name;
+        if (resp.data.data.goods_info[0].class_parameters.list) {
+          this.parametersList =
+            resp.data.data.goods_info[0].class_parameters.list;
+        } else {
+          this.parametersList = [];
+        }
+        this.relatedRecommend = resp.data.data.related_recommend;
+        if (resp.data.data.related_recommend.data) {
+          this.relatedRecommendData = resp.data.data.related_recommend.data;
+        } else {
+          this.relatedRecommendData = [];
+        }
+        this.imgList = resp.data.data.goods_tpl_datas;
+
+        for (var i in this.imgList) {
+          this.lzc = this.imgList[i];
+        }
+        // console.log(resp.data.data);
+        // console.log("这数据不对劲啊", resp.data.data.goods_info[0]);
+        // this.$forceUpdate();
+        // console.log(callback instanceof Object);
+        // console.log(callback instanceof Object);
+        if (!(callback instanceof Object)) {
+        } else {
+          callback();
+        }
+      });
     }
   },
   beforeMount() {
     this.$store.commit("NavHide", false);
-    // this.id = this.$route.params.commodity_id;
-    // this.src = this.$route.params;
-    console.log(this.$route.params);
+
+    this.id = this.$route.params.commodity_id;
+    console.log(this.$route.params.commodity_id, "lzc");
   },
   mounted() {
-    // console.log(this.id);
-    axios({
-      method: "post",
-      url: "/v1/miproduct/view",
-      data: `client_id=180100031051&channel_id=0&webp=1&commodity_id=${this.id}&pid=${this.id}`
-    }).then(resp => {
-      this.dataList = resp.data.data.goods_info;
-
-<<<<<<< HEAD
-      // if(!dataList.length){
-
-      // }
-=======
-// if(!dataList.length){
-
-// }
->>>>>>> 7cd7db8d6a3127497b161dc6125c65607d29ddaa
-
-      this.productName = resp.data.data.product_info.name;
-      this.productDesc = resp.data.data.product_info.product_desc;
-      this.marketPrice = resp.data.data.goods_info[0].market_price;
-      this.goodsName = resp.data.data.goods_info[0].name;
-      if (resp.data.data.goods_info[0].class_parameters.list) {
-        this.parametersList =
-          resp.data.data.goods_info[0].class_parameters.list;
-      } else {
-        this.parametersList = [];
-      }
-      this.relatedRecommend = resp.data.data.related_recommend;
-      if (resp.data.data.related_recommend.data) {
-        this.relatedRecommendData = resp.data.data.related_recommend.data;
-      } else {
-        this.relatedRecommendData = [];
-      }
-      this.imgList = resp.data.data.goods_tpl_datas;
-
-      for (var i in this.imgList) {
-        this.lzc = this.imgList[i];
-      }
-      // console.log(resp.data.data);
-      console.log('这数据不对劲啊',resp.data.data.goods_info[0]);
-    });
+    console.log(this.id);
+    this.lsj(this.id);
   },
   beforeDestroy() {
+    // console.log(11111);
     this.$store.commit("NavHide", true);
   }
 };
@@ -229,16 +220,15 @@ export default {
     height: auto;
   }
 }
-.msg{
-  .productName{
+.msg {
+  .productName {
     font-weight: 500;
     margin-left: 0.16575rem;
   }
-  .price{
+  .price {
     color: #ff6700;
     font-weight: 500;
     margin-left: 0.16575rem;
-
   }
 }
 .description {
@@ -269,57 +259,52 @@ export default {
   width: 3.4185rem;
   height: 1.1548rem;
   background: #e5e5e5;
-<<<<<<< HEAD
   border-radius: 0.1rem;
-=======
-  border-radius: .1rem;
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
-  .info{
-    height: .3849rem;
-    line-height: .3849rem;
+  .info {
+    height: 0.3849rem;
+    line-height: 0.3849rem;
     width: 100%;
-    text-indent: .2rem;
-    font-size: .14rem;
+    text-indent: 0.2rem;
+    font-size: 0.14rem;
     border-bottom: 1px solid #ccc;
-    .checked{
+    .checked {
       color: #999;
-      margin-right: .1rem;
+      margin-right: 0.1rem;
     }
   }
- .adds{
-    height: .3849rem;
-    line-height: .3849rem;
+  .adds {
+    height: 0.3849rem;
+    line-height: 0.3849rem;
     width: 100%;
-    text-indent: .2rem;
-    font-size: .14rem;
+    text-indent: 0.2rem;
+    font-size: 0.14rem;
     border-bottom: 1px solid #ccc;
-    .destination{
+    .destination {
       color: #999;
-      margin-right: .1rem;
+      margin-right: 0.1rem;
     }
-    .have{
-      color:#ff6700;
+    .have {
+      color: #ff6700;
     }
   }
-    .serive{
-    height: .3849rem;
-    line-height: .3849rem;
+  .serive {
+    height: 0.3849rem;
+    line-height: 0.3849rem;
     width: 100%;
-    text-indent: .2rem;
-    font-size: .14rem;
-    img{
-      width: .1012rem;
-      height: .1012rem;
+    text-indent: 0.2rem;
+    font-size: 0.14rem;
+    img {
+      width: 0.1012rem;
+      height: 0.1012rem;
     }
-    span{
+    span {
       color: #999;
-      margin:0 .1rem 0 .03rem;
-      font-size: .1rem;
+      margin: 0 0.1rem 0 0.03rem;
+      font-size: 0.1rem;
     }
   }
-
->>>>>>> 7cd7db8d6a3127497b161dc6125c65607d29ddaa
 }
 .related {
   height: 2rem;

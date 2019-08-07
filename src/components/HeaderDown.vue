@@ -12,37 +12,37 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       isFixed: false
-    };
+    }
   },
   methods: {
-    Scroll() {
+    Scroll () {
       // console.log(this.$refs.myswiper1.offsetHeight);
       if (
         document.documentElement.scrollTop >= this.$refs.myswiper1.offsetHeight
       ) {
-        this.isFixed = true;
+        this.isFixed = true
       } else {
-        this.isFixed = false;
+        this.isFixed = false
       }
     },
 
-    back() {
-      this.$router.go(-1);
+    back () {
+      this.$router.go(-1)
     },
-    search() {
-      this.$router.push("/About");
+    search () {
+      this.$router.push('/About')
     }
   },
-  mounted() {
-    window.onscroll = this.Scroll;
+  mounted () {
+    window.onscroll = this.Scroll
   },
-  beforeDestroy() {
-    window.onscroll = null;
+  beforeDestroy () {
+    window.onscroll = null
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

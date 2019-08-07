@@ -103,7 +103,7 @@ button {
   }
 }
 
-.cells_auto_fill__father_38 {
+.cells_auto_fill__father_35 {
   img {
     width: 100%;
     height: 1.0416rem;
@@ -111,10 +111,12 @@ button {
   }
   margin-bottom: 0.52rem;
 }
-
+.cells_auto_fill__father_16,
+.cells_auto_fill__father_22,
 .cells_auto_fill__father_18,
 .cells_auto_fill__father_24,
-.cells_auto_fill__father_28,
+.cells_auto_fill__father_25,
+.cells_auto_fill__father_31,
 .cells_auto_fill__father_34 {
   img {
     width: 100%;
@@ -126,9 +128,8 @@ button {
 }
 
 .cells_auto_fill__father_1,
-.cells_auto_fill__father_19,
-.cells_auto_fill__father_25,
-.cells_auto_fill__father_35 {
+.cells_auto_fill__father_23,
+.cells_auto_fill__father_32 {
   img {
     width: 100%;
     height: 2.2708rem;
@@ -161,13 +162,13 @@ button {
 .cells_auto_fill__father_13,
 .cells_auto_fill__father_15,
 .cells_auto_fill__father_17,
+.cells_auto_fill__father_19,
 .cells_auto_fill__father_21,
-.cells_auto_fill__father_23,
+.cells_auto_fill__father_26,
 .cells_auto_fill__father_27,
-.cells_auto_fill__father_29,
-.cells_auto_fill__father_31,
-.cells_auto_fill__father_33,
-.cells_auto_fill__father_37 {
+.cells_auto_fill__father_28,
+.cells_auto_fill__father_30,
+.cells_auto_fill__father_34 {
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-around;
@@ -213,12 +214,12 @@ button {
 .cells_auto_fill__p1_23,
 .cells_auto_fill__p1_24,
 .cells_auto_fill__p1_25,
+.cells_auto_fill__p1_26,
 .cells_auto_fill__p1_27,
-.cells_auto_fill__p1_29,
-.cells_auto_fill__p1_31,
-.cells_auto_fill__p1_33,
-.cells_auto_fill__p1_37,
-.cells_auto_fill__p1_35 {
+.cells_auto_fill__p1_28,
+.cells_auto_fill__p1_30,
+.cells_auto_fill__p1_32,
+.cells_auto_fill__p1_34 {
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
@@ -241,12 +242,13 @@ button {
 .cells_auto_fill__p2_23,
 .cells_auto_fill__p2_24,
 .cells_auto_fill__p2_25,
+.cells_auto_fill__p2_26,
 .cells_auto_fill__p2_27,
-.cells_auto_fill__p2_29,
-.cells_auto_fill__p2_31,
+.cells_auto_fill__p2_28,
+.cells_auto_fill__p2_30,
 .cells_auto_fill__p2_33,
-.cells_auto_fill__p2_35,
-.cells_auto_fill__p2_37 {
+.cells_auto_fill__p2_32,
+.cells_auto_fill__p2_34 {
   text-align: center;
   color: #777;
 }
@@ -265,12 +267,13 @@ button {
 .cells_auto_fill__p3_23,
 .cells_auto_fill__p3_24,
 .cells_auto_fill__p3_25,
+.cells_auto_fill__p3_26,
 .cells_auto_fill__p3_27,
-.cells_auto_fill__p3_29,
-.cells_auto_fill__p3_31,
+.cells_auto_fill__p3_28,
+.cells_auto_fill__p3_30,
 .cells_auto_fill__p3_33,
-.cells_auto_fill__p3_35,
-.cells_auto_fill__p3_37 {
+.cells_auto_fill__p3_32,
+.cells_auto_fill__p3_34 {
   text-align: center;
   color: red;
   span {

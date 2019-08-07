@@ -25,23 +25,23 @@
 </template>
 
 <script>
-import Cnxh from "@/components/Cnxh.vue";
-import HeaderDown from "@/components/HeaderDown.vue";
+import Cnxh from '@/components/Cnxh.vue'
+import HeaderDown from '@/components/HeaderDown.vue'
 export default {
-  data() {
-    return {};
+  data () {
+    return {}
   },
   components: {
     HeaderDown,
     Cnxh
   },
-  beforeMount() {
-    this.$store.commit("NavHide", false);
+  beforeMount () {
+    this.$store.commit('NavHide', false)
   },
-  beforeDestroy() {
-    this.$store.commit("NavHide", true);
+  beforeDestroy () {
+    this.$store.commit('NavHide', true)
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

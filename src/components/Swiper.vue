@@ -10,20 +10,20 @@
 </template>
 
 <script>
-import Swiper from "swiper";
-import "swiper/dist/css/swiper.css";
+import Swiper from 'swiper'
+import 'swiper/dist/css/swiper.css'
 
 export default {
-  mounted() {
+  mounted () {
     this.$nextTick(() => {
-      new Swiper(".Swiper1", {
+      new Swiper('.Swiper1', {
         pagination: {
-          el: ".swiper-pagination"
+          el: '.swiper-pagination'
         }
-      });
-    });
+      })
+    })
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

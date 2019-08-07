@@ -6,15 +6,15 @@
 
 <script>
 export default {
-  data() {
-    return {};
+  data () {
+    return {}
   },
   methods: {
-    check() {
-      this.$router.go(-1);
+    check () {
+      this.$router.go(-1)
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

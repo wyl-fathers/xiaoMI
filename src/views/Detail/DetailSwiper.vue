@@ -10,21 +10,20 @@
 </template>
 
 <script>
-import Swiper from "swiper";
-import "swiper/dist/css/swiper.css";
+import Swiper from 'swiper'
+import 'swiper/dist/css/swiper.css'
 
 export default {
-  props:["perView","myClass"],
-  mounted() {
-     new Swiper('.swiper2', {
-       slidesPerView:4,
-       spaceBetween:30,
-       freeMode:true,
-    });
+  props: ['perView', 'myClass'],
+  mounted () {
+    new Swiper('.swiper2', {
+      slidesPerView: 4,
+      spaceBetween: 30,
+      freeMode: true
+    })
   }
-};
+}
 </script>
 <style lang="scss" scoped>
 
 </style>
-

@@ -15,7 +15,7 @@
       v-for="data in AllList[3]"
       :key="data.ad_position_id?data.ad_position_id:Math.random()"
     ></div>
-    <div class="cell_fill">
+    <div class="cell_fill" @click="to_1">
       <div
         v-for="(data,index) in AllList[4]"
         :key="data.ad_position_id?data.ad_position_id:Math.random()"
@@ -30,7 +30,7 @@
       :key="data.ad_position_id?data.ad_position_id:Math.random()"
     ></div>
 
-    <div class="cells_auto_fill_1_father">
+    <div class="cells_auto_fill_1_father" @click="to_2">
       <div
         v-for="(data,index) in AllList[6]"
         :key="data.ad_position_id?data.ad_position_id:Math.random()"
@@ -49,6 +49,7 @@
       v-for="(data) in AllList[8]"
       :key="data.ad_position_id?data.ad_position_id:Math.random()"
       class="cells_auto_fill_8_1"
+      @click="to_3"
     >
       <img :src="data.img_url" v-lazy="data.img_url" />
     </div>
@@ -63,6 +64,7 @@
       v-for="(data) in AllList[10]"
       :key="data.ad_position_id?data.ad_position_id:Math.random()"
       class="cells_auto_fill_10_1"
+      @click="to_4"
     >
       <img :src="data.img_url" />
     </div>
@@ -117,6 +119,18 @@ export default {
     };
   },
   methods: {
+    to_1() {
+      this.$router.push("/Detail/10000123");
+    },
+    to_2() {
+      this.$router.push("/Detail/10000131");
+    },
+    to_3() {
+      this.$router.push("/Detail/9614");
+    },
+    to_4() {
+      this.$router.push("/Detail/10000163");
+    },
     toDetail(data) {
       this.$router.push(`/Detail/${data}`);
     },

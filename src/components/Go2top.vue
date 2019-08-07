@@ -7,48 +7,48 @@
 </template>
 <script>
 export default {
-  name: "BackTop",
-  data() {
+  name: 'BackTop',
+  data () {
     return {
       isShow: false
-    };
+    }
   },
   methods: {
     //  添加样式，鼠标hover上去，改变颜色
-    addhoverClass(e) {
-      if (e.type === "mouseover" && this.$el.classList) {
-        this.$el.classList.add("hover");
-      } else if (e.type === "mouseout" && this.$el.classList) {
-        this.$el.classList.remove("hover");
+    addhoverClass (e) {
+      if (e.type === 'mouseover' && this.$el.classList) {
+        this.$el.classList.add('hover')
+      } else if (e.type === 'mouseout' && this.$el.classList) {
+        this.$el.classList.remove('hover')
       }
     },
-    showIcon() {
+    showIcon () {
       if (document.documentElement.scrollTop > 100) {
-        this.isShow = true;
-        this.$el.addEventListener("mouseover", this.addhoverClass);
-        this.$el.addEventListener("mouseout", this.addhoverClass);
+        this.isShow = true
+        this.$el.addEventListener('mouseover', this.addhoverClass)
+        this.$el.addEventListener('mouseout', this.addhoverClass)
       } else if (document.documentElement.scrollTop < 100) {
-        this.isShow = false;
+        this.isShow = false
       }
     },
-    getTop() {
+    getTop () {
       let timer = setInterval(() => {
-        let top = document.documentElement.scrollTop;
-        let speed = Math.ceil(top / 5);
-        document.documentElement.scrollTop = top - speed;
+        let top = document.documentElement.scrollTop
+        let speed = Math.ceil(top / 5)
+        document.documentElement.scrollTop = top - speed
         if (top === 0) {
-          clearInterval(timer);
+          clearInterval(timer)
         }
-      }, 20);
+      }, 20)
     }
   },
-  mounted() {
-    window.addEventListener("scroll", this.showIcon);
+  mounted () {
+    window.addEventListener('scroll', this.showIcon)
   },
-  beforeDestroy() {
-    window.removeEventListener("scroll", this.showIcon);
+  beforeDestroy () {
+    window.removeEventListener('scroll', this.showIcon)
   }
-};
+}
 </script>
 
 <style lang="scss" >

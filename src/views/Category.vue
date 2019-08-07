@@ -6,17 +6,17 @@
 </template>
 
 <script>
-import Category from "@/views/Category/CategoryHead.vue";
-import CategoryBody from "@/views/Category/CategoryBody.vue";
+import Category from '@/views/Category/CategoryHead.vue'
+import CategoryBody from '@/views/Category/CategoryBody.vue'
 export default {
-  data() {
-    return {};
+  data () {
+    return {}
   },
   components: {
     Category,
     CategoryBody
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

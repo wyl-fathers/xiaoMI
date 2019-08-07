@@ -85,13 +85,13 @@
 
 <script>
 export default {
-  methods:{
-    ccc(){
+  methods: {
+    ccc () {
       // console.log(213)
       this.$router.push('/Pass')
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

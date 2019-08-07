@@ -16,46 +16,46 @@
 </template>
 
 <script>
-import axios from "axios";
-import Swiper from "swiper";
+import axios from 'axios'
+import Swiper from 'swiper'
 export default {
-  data() {
+  data () {
     return {
       dataList: [],
       iscolor: 0
-    };
+    }
   },
   methods: {
-    check(el) {
+    check (el) {
       // console.log(el);
-      this.$emit("lzcindex", el);
-      this.iscolor = el;
+      this.$emit('lzcindex', el)
+      this.iscolor = el
     },
-    isChange() {}
+    isChange () {}
   },
-  mounted() {
+  mounted () {
     axios({
-      method: "post",
-      url: "/v1/home/page",
+      method: 'post',
+      url: '/v1/home/page',
       data: {
-        client_id: "180100031051",
-        channel_id: "0",
-        webp: "1",
-        page_type: "recommend",
-        recommend_tag: "XMGUEST-4E017660-9F8B-11E9-8EF2-E7ECC66E4982"
+        client_id: '180100031051',
+        channel_id: '0',
+        webp: '1',
+        page_type: 'recommend',
+        recommend_tag: 'XMGUEST-4E017660-9F8B-11E9-8EF2-E7ECC66E4982'
       }
     }).then(resp => {
       //   console.log(resp.data.data);
-      this.dataList = resp.data.data.tabs;
+      this.dataList = resp.data.data.tabs
       this.$nextTick(() => {
-        new Swiper(".HeaderSwiper", {
+        new Swiper('.HeaderSwiper', {
           // loop: true,
           slidesPerView: 5
-        });
-      });
-    });
+        })
+      })
+    })
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

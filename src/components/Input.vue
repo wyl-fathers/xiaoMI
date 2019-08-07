@@ -10,20 +10,20 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       icon: `\ue66f  搜索商品名称 `
-    };
+    }
   },
   methods: {
-    search() {
-      this.$router.push("/About");
+    search () {
+      this.$router.push('/About')
     },
-    touser() {
-      this.$router.push("/User");
+    touser () {
+      this.$router.push('/User')
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

@@ -12,39 +12,10 @@ export default new Vuex.Store({
 
   },
   mutations: {
-    localShop(state,data){
-      state.goodslist=data
+    localShop(state, data) {
+      state.goodslist = data
     },
 
-
-    addshop(state,data){
-      for (var i in Array.from(state.goodslist)) {
-        if (Array.from(state.goodslist)[i].id == data.id) {
-          state.goodslist[i].number++
-          return
-        }
-      }
-
-
-
-      state.goodslist.push(data)
-    },
-
-    // delshop(state,data){
-    //   if(state.goodslist){
-    //     return
-    //   }
-    //   var a =   Array.from(state.goodslist).indexOf(data)
-    //   state.goodslist.splice(a,1)
-    // },
-    delshop(state,data){
-      state.goodslist.splice(data,1)
-    },
-
-
-    changdu(state,data){
-      state.hide =data
-    },
 
     addshop(state, data) {
       for (var i in Array.from(state.goodslist)) {
@@ -53,6 +24,9 @@ export default new Vuex.Store({
           return
         }
       }
+
+
+
       state.goodslist.push(data)
     },
 

@@ -1,13 +1,11 @@
 <template>
   <div class="cartlist">
     <div class="cnxh">
-        <h1 v-if="imgList">
-          {{imgList.title}}
-        </h1>
+      <h1 v-if="imgList">{{imgList.title}}</h1>
     </div>
 
     <ul class="nmb">
-      <li v-for="data in dataList" :key="data.path" @click="handledetail(data.path)">
+      <li v-for="data in dataList" :key="data.path" @click="handledetail(data)">
         <img :src="data.image_url" />
         <div class="good">
           <div class="name">{{data.name}}</div>
@@ -37,13 +35,17 @@ export default {
     handlehome() {
       this.$router.push("/Best");
     },
-    handledetail() {
-      console.log(1111);
-      this.$router.push("");
+    handledetail(el) {
+      // console.log(el.commodity_id);
+      this.$emit("lzc", el.commodity_id);
+      this.$router.push(`/Detail/${el.commodity_id}`);
+      // this.$router.push(`/Detail/9455`);
+      // location.reload();
+      // this.lsj(el.commodity_id);
     }
   },
 
- beforeMount() {
+  beforeMount() {
     this.id = this.$route.params.commodity_id;
   },
 
@@ -51,13 +53,15 @@ export default {
     axios({
       method: "post",
       url: "/v1/miproduct/recommend",
-      data:
-        `client_id=180100031051&channel_id=0&webp=1&product_id=${this.id}`
+      data: `client_id=180100031051&channel_id=0&webp=1&product_id=${this.id}`
     }).then(res => {
-      this.imgList = res.data.data
+      this.imgList = res.data.data;
       this.dataList = res.data.data.recommend_list;
-      console.log('这数据拿不回来啊',this.dataList);
+      // console.log("这数据拿不回来啊", this.dataList);
     });
+  },
+  updated() {
+    // console.log("zxxzczxc");
   }
 };
 </script>
@@ -99,7 +103,7 @@ img {
   width: 100%;
   height: 0.625rem;
   text-align: center;
-  h1{
+  h1 {
     height: 0.625rem;
     line-height: 0.625rem;
     color: #ff6700;
@@ -149,4 +153,3 @@ img {
   }
 }
 </style>
-

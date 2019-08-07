@@ -10,28 +10,28 @@
 </template>
 
 <script>
-import Go from "@/components/Go2-1.vue";
-import Swi from "@/components/Swiper.vue";
+import Go from '@/components/Go2-1.vue'
+import Swi from '@/components/Swiper.vue'
 
 export default {
-  data() {
+  data () {
     return {
       dataList: []
-    };
+    }
   },
-  beforeMount() {
-    this.$store.commit("NavHide", false);
+  beforeMount () {
+    this.$store.commit('NavHide', false)
   },
-  mounted() {},
+  mounted () {},
 
-  beforeDestroy() {
-    this.$store.commit("NavHide", true);
+  beforeDestroy () {
+    this.$store.commit('NavHide', true)
   },
   components: {
     Go,
     Swi
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

@@ -1,0 +1,97 @@
+webpackHotUpdate("main",{
+
+/***/ "./src/Components/Swiper/index.js":
+/*!****************************************!*\
+  !*** ./src/Components/Swiper/index.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Carousel; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/_react@16.8.6@react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_swipe__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-swipe */ "./node_modules/_react-swipe@6.0.4@react-swipe/lib/index.js");
+/* harmony import */ var react_swipe__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_swipe__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/_react-router-dom@5.0.1@react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _index_module_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./index.module.scss */ "./src/Components/Swiper/index.module.scss");
+/* harmony import */ var _index_module_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_index_module_scss__WEBPACK_IMPORTED_MODULE_4__);
+var _jsxFileName = "C:\\Users\\dachaoge-ggd\\Desktop\\React_project_exercise\\myownapp\\src\\Components\\Swiper\\index.js";
+
+
+
+
+
+class Carousel extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+  render() {
+    console.log(this.props);
+    let reactSwipeEl;
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: _index_module_scss__WEBPACK_IMPORTED_MODULE_4___default.a.Swiper,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 15
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_swipe__WEBPACK_IMPORTED_MODULE_2___default.a, {
+      className: "carousel",
+      swipeOptions: {
+        continuous: true,
+        auto: 3000
+      },
+      ref: el => reactSwipeEl = el,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 16
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 24
+      },
+      __self: this
+    }, "PANE 1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 25
+      },
+      __self: this
+    }, "PANE 2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 26
+      },
+      __self: this
+    }, "PANE 3"), this.props.dataList ? this.props.dataList.map(item => {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        key: item.bannerId,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 29
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: item.imgUrl,
+        alt: item.name,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 30
+        },
+        __self: this
+      }), "1");
+    }) : null));
+  }
+
+  componentDidMount() {// console.log(this.props)
+  }
+
+}
+
+/***/ })
+
+})
+//# sourceMappingURL=main.781b97ed74d4cee2169d.hot-update.js.map

@@ -48,33 +48,33 @@
   </div>
 </template>
 <script>
-import HeaderDown from "@/components/HeaderDown.vue";
-import axios from "axios";
+import HeaderDown from '@/components/HeaderDown.vue'
+import axios from 'axios'
 export default {
-  beforeMount() {
-    this.$store.commit("NavHide", false)
-    },
-  beforeDestroy() {
-    this.$store.commit("NavHide", true);
-    },
-  data() {
+  beforeMount () {
+    this.$store.commit('NavHide', false)
+  },
+  beforeDestroy () {
+    this.$store.commit('NavHide', true)
+  },
+  data () {
     return {
       iconList: []
-    };
+    }
   },
-  mounted() {
+  mounted () {
     axios({
-      method: "post",
-      url: "/v1/service/list",
-      data: "client_id=180100031051&channel_id=0&webp=1"
+      method: 'post',
+      url: '/v1/service/list',
+      data: 'client_id=180100031051&channel_id=0&webp=1'
     }).then(resp => {
-      console.log(resp.data);
-      this.iconList = resp.data.data.service_icon_list.data_json;
-    });
+      console.log(resp.data)
+      this.iconList = resp.data.data.service_icon_list.data_json
+    })
   },
   components: { HeaderDown },
   methods: {}
-};
+}
 </script>
 
 <style lang="scss" scoped>

@@ -16,74 +16,74 @@
 </template>
 
 <script>
-import Vue from "vue";
-import axios from "axios";
-import { IndexList, IndexSection } from "mint-ui";
-import HeaderDown from "@/components/HeaderDown.vue";
-Vue.component(IndexList.name, IndexList);
-Vue.component(IndexSection.name, IndexSection);
+import Vue from 'vue'
+import axios from 'axios'
+import { IndexList, IndexSection } from 'mint-ui'
+import HeaderDown from '@/components/HeaderDown.vue'
+Vue.component(IndexList.name, IndexList)
+Vue.component(IndexSection.name, IndexSection)
 export default {
-  beforeMount() {
-    this.$store.commit("NavHide", false)
-    },
-  beforeDestroy() {
-    this.$store.commit("NavHide", true);
-    },
+  beforeMount () {
+    this.$store.commit('NavHide', false)
+  },
+  beforeDestroy () {
+    this.$store.commit('NavHide', true)
+  },
   components: { HeaderDown },
-  data() {
+  data () {
     return {
       datalist: {}
-    };
+    }
   },
-  mounted() {
+  mounted () {
     // console.log(this.$refs.ccc.$el);
-    this.$refs.ccc.$el.style.height = window.innerHeight - 50 + "px";
+    this.$refs.ccc.$el.style.height = window.innerHeight - 50 + 'px'
 
     axios({
-      url: "https://m.maizuo.com/gateway?k=9502566",
+      url: 'https://m.maizuo.com/gateway?k=9502566',
       headers: {
-        "X-Client-Info":
+        'X-Client-Info':
           '{"a":"3000","ch":"1002","v":"5.0.4","e":"15610855429195524981146"}',
-        "X-Host": "mall.film-ticket.city.list"
+        'X-Host': 'mall.film-ticket.city.list'
       }
     }).then(res => {
       // console.log(res.data);
-      this.datalist = this.handleCity(res.data.data.cities);
-      console.log(this.datalist);
-    });
+      this.datalist = this.handleCity(res.data.data.cities)
+      console.log(this.datalist)
+    })
   },
   methods: {
-    handleCity(data) {
+    handleCity (data) {
       // console.log(data);
-      var arr = [];
+      var arr = []
       for (var i = 65; i < 91; i++) {
-        arr.push(String.fromCharCode(i));
+        arr.push(String.fromCharCode(i))
       }
 
-      var arr_city = [];
+      var arr_city = []
       for (var j = 0; j < arr.length; j++) {
         var a = data.filter(
           item => item.pinyin.substring(0, 1) === arr[j].toLowerCase()
-        );
+        )
         if (arr.length > 0) {
           arr_city.push({
             index: arr[j],
             list: a
-          });
+          })
         }
       }
 
-      return arr_city;
+      return arr_city
     },
-        handleClick(id,name){
+    handleClick (id, name) {
       console.log(id)
-      localStorage.setItem("cityId",id);
-      localStorage.setItem("cityName",encodeURIComponent(name));
+      localStorage.setItem('cityId', id)
+      localStorage.setItem('cityName', encodeURIComponent(name))
       this.$router.push(`/cinema`)
     }
 
   }
-};
+}
 </script>
 <style lang="scss" scoped>
 .go2{

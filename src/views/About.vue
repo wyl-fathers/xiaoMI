@@ -51,12 +51,12 @@
 </template>
 
 <script>
-import { Indicator } from "mint-ui";
-import HeaderDown from "@/components/HeaderDown.vue";
-import axios from "axios";
+import { Indicator } from 'mint-ui'
+import HeaderDown from '@/components/HeaderDown.vue'
+import axios from 'axios'
 
 export default {
-  data() {
+  data () {
     return {
       icon: `\ue66f  搜索商品名称 `,
       src: null,
@@ -64,75 +64,75 @@ export default {
       shopList: [],
       searchList: null,
       input: ``
-    };
-  },
-  methods: {
-    toList(el) {
-      this.$router.push(`/About/list${el}`);
-    },
-    tosearchlist(data) {
-      // console.log(data);
-      this.$router.push(`/About/list${data}`);
-    },
-    SS() {
-      this.$router.push(`/About/list${this.input}`);
-    },
-    sousuo() {
-      this.searchList = null;
-      axios({
-        method: "post",
-        url: "/v1/hisearch/suggestion_v3",
-        data: `client_id=180100031051&channel_id=0&webp=1&query=${this.input}`
-      }).then(resp => {
-        console.log(resp.data);
-        console.log(resp.data.data);
-        if (
-          resp.data.data == "null" ||
-          resp.data.data == null ||
-          resp.data.data == "undefined" ||
-          resp.data.data.data == "undefined" ||
-          resp.data.data.list == undefined
-        ) {
-          return;
-        } else {
-          this.searchList = resp.data.data.list;
-          console.log(this.searchList);
-        }
-      });
     }
   },
-  beforeMount() {
-    this.$store.commit("NavHide", false);
-    Indicator.open("加载中...");
+  methods: {
+    toList (el) {
+      this.$router.push(`/About/list${el}`)
+    },
+    tosearchlist (data) {
+      // console.log(data);
+      this.$router.push(`/About/list${data}`)
+    },
+    SS () {
+      this.$router.push(`/About/list${this.input}`)
+    },
+    sousuo () {
+      this.searchList = null
+      axios({
+        method: 'post',
+        url: '/v1/hisearch/suggestion_v3',
+        data: `client_id=180100031051&channel_id=0&webp=1&query=${this.input}`
+      }).then(resp => {
+        console.log(resp.data)
+        console.log(resp.data.data)
+        if (
+          resp.data.data == 'null' ||
+          resp.data.data == null ||
+          resp.data.data == 'undefined' ||
+          resp.data.data.data == 'undefined' ||
+          resp.data.data.list == undefined
+        ) {
+
+        } else {
+          this.searchList = resp.data.data.list
+          console.log(this.searchList)
+        }
+      })
+    }
+  },
+  beforeMount () {
+    this.$store.commit('NavHide', false)
+    Indicator.open('加载中...')
   },
 
-  mounted() {
+  mounted () {
     axios({
-      method: "post",
-      url: "/v1/hisearch/se_default",
-      data: "client_id=180100031051&channel_id=0&webp=1"
+      method: 'post',
+      url: '/v1/hisearch/se_default',
+      data: 'client_id=180100031051&channel_id=0&webp=1'
     }).then(resp => {
       // console.log(resp.data.data);
-      this.src = resp.data.data.ad_list[0].body.items[0].img_url;
+      this.src = resp.data.data.ad_list[0].body.items[0].img_url
 
       this.shopList = resp.data.data.hot_class.filter((el, index) => {
-        return index < 13;
-      });
-      this.dataList = resp.data.data.keywords;
+        return index < 13
+      })
+      this.dataList = resp.data.data.keywords
       setTimeout(() => {
-        Indicator.close();
-      }, 300);
+        Indicator.close()
+      }, 300)
       // console.log(this.shopList);
-    });
+    })
   },
 
-  beforeDestroy() {
-    this.$store.commit("NavShow", true);
+  beforeDestroy () {
+    this.$store.commit('NavShow', true)
   },
   components: {
     HeaderDown
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

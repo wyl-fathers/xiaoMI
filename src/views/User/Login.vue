@@ -237,24 +237,22 @@
 </template>
 
 <script>
-import Go from '@/components/Go2-1.vue';
+import Go from '@/components/Go2-1.vue'
 export default {
   methods: {},
-  components:{Go},
-  beforeMount() {
-    this.$store.commit("NavHide", false)
-    },
-    updated(){
-          this.$store.commit("NavHide", false)
-
-    },
-  beforeDestroy() {
-    this.$store.commit("NavHide", true);
-    }
-  };
+  components: { Go },
+  beforeMount () {
+    this.$store.commit('NavHide', false)
+  },
+  updated () {
+    this.$store.commit('NavHide', false)
+  },
+  beforeDestroy () {
+    this.$store.commit('NavHide', true)
+  }
+}
 
 </script>
-
 
 <style lang="scss" scoped>
 .go2{

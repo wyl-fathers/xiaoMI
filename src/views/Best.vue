@@ -10,39 +10,39 @@
 
 <script>
 // import axios from "axios";
-import Input1 from "@/components/Input.vue";
-import HeaderSwiper from "@/views/Header/HeaderSwiper.vue";
+import Input1 from '@/components/Input.vue'
+import HeaderSwiper from '@/views/Header/HeaderSwiper.vue'
 
-import Recommend1 from "@/views/First/Phone.vue";
-import Recommend2 from "@/views/First/Brain.vue";
-import Recommend5 from "@/views/First/HouseEle.vue";
-import Recommend6 from "@/views/First/Live.vue";
-import Recommend3 from "@/views/First/TV.vue";
-import Recommend4 from "@/views/First/NoteBook.vue";
-import Recommend0 from "@/views/First/Recommend.vue";
+import Recommend1 from '@/views/First/Phone.vue'
+import Recommend2 from '@/views/First/Brain.vue'
+import Recommend5 from '@/views/First/HouseEle.vue'
+import Recommend6 from '@/views/First/Live.vue'
+import Recommend3 from '@/views/First/TV.vue'
+import Recommend4 from '@/views/First/NoteBook.vue'
+import Recommend0 from '@/views/First/Recommend.vue'
 
 // import BestHead from "@/views/Best/BestHead.vue";
 // import BestList from "@/views/Best/BestList.vue";
 export default {
-  data() {
+  data () {
     return {
       ccc: 0,
       isFixed: false
-    };
+    }
   },
   methods: {
-    geiindex(data) {
-      this.ccc = data;
+    geiindex (data) {
+      this.ccc = data
     },
 
-    Scroll() {
+    Scroll () {
       if (
         document.documentElement.scrollTop >=
         this.$refs.myswiper.$el.offsetHeight
       ) {
-        this.isFixed = true;
+        this.isFixed = true
       } else {
-        this.isFixed = false;
+        this.isFixed = false
       }
     }
   },
@@ -57,13 +57,13 @@ export default {
     Recommend4,
     Recommend0
   },
-  mounted() {
-    window.onscroll = this.Scroll;
+  mounted () {
+    window.onscroll = this.Scroll
   },
-  beforeDestroy() {
-    window.onscroll = null;
+  beforeDestroy () {
+    window.onscroll = null
   }
-};
+}
 </script>
 
 <style lang="scss" >

@@ -101,57 +101,57 @@
 </template>
 
 <script>
-import axios from "axios";
-import BestHead from "@/views/Best/BestHead.vue";
-import BestList from "@/views/Best/BestList.vue";
+import axios from 'axios'
+import BestHead from '@/views/Best/BestHead.vue'
+import BestList from '@/views/Best/BestList.vue'
 
-import { Lazyload } from "mint-ui";
+import { Lazyload } from 'mint-ui'
 
 // Vue.use(Lazyload);
 export default {
-  data() {
+  data () {
     return {
       dataList: [],
       sections: [],
       AllList: []
-    };
-  },
-  methods: {
-    toDetail(data) {
-      this.$router.push(`/Detail/${data}`);
     }
   },
-  mounted() {
+  methods: {
+    toDetail (data) {
+      this.$router.push(`/Detail/${data}`)
+    }
+  },
+  mounted () {
     axios({
-      method: "post",
-      url: "/v1/home/page",
+      method: 'post',
+      url: '/v1/home/page',
       data: {
-        client_id: "180100031051",
-        channel_id: "0",
-        webp: "1",
-        page_type: "recommend",
-        recommend_tag: "XMGUEST-4E017660-9F8B-11E9-8EF2-E7ECC66E4982"
+        client_id: '180100031051',
+        channel_id: '0',
+        webp: '1',
+        page_type: 'recommend',
+        recommend_tag: 'XMGUEST-4E017660-9F8B-11E9-8EF2-E7ECC66E4982'
       }
     }).then(resp => {
-      this.sections = resp.data.data.data.sections;
+      this.sections = resp.data.data.data.sections
       this.sections.forEach(el => {
         if (el.body.items) {
-          this.AllList.push(el.body.items);
+          this.AllList.push(el.body.items)
         } else {
-          this.AllList.push(1);
+          this.AllList.push(1)
         }
-      });
+      })
       this.dataList = this.sections.filter((el, index) => {
-        return index > 11;
-      });
-      console.log(this.dataList);
-    });
+        return index > 11
+      })
+      console.log(this.dataList)
+    })
   },
   components: {
     BestHead,
     BestList
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

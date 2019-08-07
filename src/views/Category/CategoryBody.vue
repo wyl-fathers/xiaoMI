@@ -35,55 +35,55 @@
 </template>
 
 <script>
-import Vue from "vue";
-import axios from "axios";
-import { IndexList, IndexSection, Lazyload } from "mint-ui";
+import Vue from 'vue'
+import axios from 'axios'
+import { IndexList, IndexSection, Lazyload } from 'mint-ui'
 
-Vue.component(IndexList.name, IndexList);
-Vue.component(IndexSection.name, IndexSection);
+Vue.component(IndexList.name, IndexList)
+Vue.component(IndexSection.name, IndexSection)
 export default {
-  data() {
+  data () {
     return {
       nameList: [],
       dataList: [],
       aaa: 0
-    };
+    }
   },
 
   methods: {
-    check(data, src) {
+    check (data, src) {
       this.$router.push({
-        name: "haha",
+        name: 'haha',
         params: { commodity_id: data.action.path, src }
-      });
+      })
       // this.$router.push(`/Detail/${data.action.path}`);
     }
   },
-  mounted() {
+  mounted () {
     axios({
-      method: "post",
-      url: "/v1/home/category_v2",
-      data: "client_id=180100031051&channel_id=0&webp=1"
+      method: 'post',
+      url: '/v1/home/category_v2',
+      data: 'client_id=180100031051&channel_id=0&webp=1'
     }).then(resp => {
-      console.log(resp.data);
-      this.dataList = resp.data.data;
-      console.log(resp.data.data[1].category_list[1].body);
+      console.log(resp.data)
+      this.dataList = resp.data.data
+      console.log(resp.data.data[1].category_list[1].body)
       //   console.log(this.$refs.scrollList);
 
       // 写定Countent的高度
       this.$refs.scrollList.$el.style.height =
-        document.documentElement.clientHeight / 100 - 1.02 + "rem";
+        document.documentElement.clientHeight / 100 - 1.02 + 'rem'
       this.aaa =
         (document.documentElement.clientHeight / 100 - 1.02) *
-        document.documentElement.style.fontSize.substring(0, 3);
+        document.documentElement.style.fontSize.substring(0, 3)
       //   console.log(document.documentElement.style.fontSize.substring(0, 3));
       //   console.log(
       //     (document.documentElement.clientHeight / 100 - 2) *
       //       document.documentElement.style.fontSize.substring(0, 3)
       //   );
-    });
+    })
   }
-};
+}
 </script>
 
 <style lang="scss" >

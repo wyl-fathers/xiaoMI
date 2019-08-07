@@ -25,13 +25,13 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
-      iconList: ["\ue69f", "\ue69e", "\ue64f", "\ue687"],
-      dataList: ["首页", "分类", "购物车", "我的"]
-    };
+      iconList: ['\ue69f', '\ue69e', '\ue64f', '\ue687'],
+      dataList: ['首页', '分类', '购物车', '我的']
+    }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

@@ -1,8 +1,4 @@
 <template>
-<<<<<<< HEAD
-    <div class="pay">dfg</div>
-</template>
-=======
   <div :class="isFixed?'fixed':''" id="sj">
     <div class="HeaderDown" ref="myswiper1">
       <span class="iconfont" @click="back">&#xe66d;</span>
@@ -349,4 +345,3 @@ export default {
 
 
 </style>
->>>>>>> fcf60af4e627ecee4111ad7f8e41ff9932557baa

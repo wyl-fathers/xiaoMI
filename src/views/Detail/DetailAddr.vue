@@ -5,19 +5,18 @@
 
 <script>
 
-
 export default {
-  mounted() {
+  mounted () {
     axios({
-       method: "post",
-       url: "/v1/miproduct/activity_info",
-       data:''
-    }).then(resp =>{
-      console.log(resp.data)
+      method: 'post',
+      url: '/v1/miproduct/activity_info',
+      data: ''
+    }).then(resp => {
+      // console.log(resp.data)
       this.dataList = resp.data
     })
   }
-};
+}
 </script>
 <style lang="scss" scoped>
 

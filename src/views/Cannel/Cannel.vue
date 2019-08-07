@@ -39,48 +39,48 @@
 </template>
 
 <script>
-import HeaderDown from "@/components/HeaderDown.vue";
-import Swi from "@/components/Swiper.vue";
+import HeaderDown from '@/components/HeaderDown.vue'
+import Swi from '@/components/Swiper.vue'
 
-import axios from "axios";
+import axios from 'axios'
 export default {
-  data() {
+  data () {
     return {
       icon: `\ue66f  搜索商品名称 `,
       input: ``,
       dataList: [],
       shopList: null
-    };
+    }
   },
-  beforeMount() {
-    this.$store.commit("NavHide", false);
+  beforeMount () {
+    this.$store.commit('NavHide', false)
   },
-  mounted() {
+  mounted () {
     axios({
-      method: "post",
-      url: "/v1/home/recommendChannel",
-      data: "client_id=180100031051&channel_id=0&webp=1&id=1852"
+      method: 'post',
+      url: '/v1/home/recommendChannel',
+      data: 'client_id=180100031051&channel_id=0&webp=1&id=1852'
     }).then(resp => {
-      this.dataList = resp.data.data.sections[0].body.items;
+      this.dataList = resp.data.data.sections[0].body.items
       this.shopList = resp.data.data.sections.filter((el, index) => {
-        return index > 0;
-      });
-      console.log(this.shopList);
-    });
+        return index > 0
+      })
+      console.log(this.shopList)
+    })
   },
   methods: {
-    toDetail(data) {
-      this.$router.push(`/Detail/${data}`);
+    toDetail (data) {
+      this.$router.push(`/Detail/${data}`)
     }
   },
   components: {
     HeaderDown,
     Swi
   },
-  beforeDestroy() {
-    this.$store.commit("NavHide", true);
+  beforeDestroy () {
+    this.$store.commit('NavHide', true)
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

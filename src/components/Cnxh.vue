@@ -5,7 +5,7 @@
     </div>
 
     <ul class="nmb">
-      <li v-for="data in datalist" :key="data.path" @click="handledetail(data)" >
+      <li v-for="data in datalist" :key="data.path" @click="handledetail(data)">
         <img :src="data.image_url" />
         <div class="good">
           <div class="name">{{data.name}}</div>
@@ -22,43 +22,38 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios'
 export default {
-  data() {
+  data () {
     return {
       img1: null,
       datalist: []
-    };
-  },
-
-  methods: {
-    handlehome() {
-      this.$router.push("/Best");
-    },
-    handledetail(goods_id) {
-    var zzz =goods_id
-<<<<<<< HEAD
-      console.log(zzz)
-=======
-      // console.log(zzz)
->>>>>>> fcf60af4e627ecee4111ad7f8e41ff9932557baa
-      this.$router.push(`/Detail/${zzz.action.path}`);
     }
   },
 
-  mounted() {
+  methods: {
+    handlehome () {
+      this.$router.push('/Best')
+    },
+    handledetail (goods_id) {
+      var zzz = goods_id
+      this.$router.push(`/Detail/${zzz.action.path}`)
+    }
+  },
+
+  mounted () {
     axios({
-      method: "post",
-      url: "/v1/home/recommendBlank",
+      method: 'post',
+      url: '/v1/home/recommendBlank',
       data:
-        "client_id=180100031051&channel_id=0&webp=1&source=list&recommend_tag=XMGUEST-4DE00030-A142-11E9-B821-1F90296FF9DF"
+        'client_id=180100031051&channel_id=0&webp=1&source=list&recommend_tag=XMGUEST-4DE00030-A142-11E9-B821-1F90296FF9DF'
     }).then(res => {
-      this.img1 = res.data.data.header.body.items[0];
-      this.datalist = res.data.data.recom_list;
+      this.img1 = res.data.data.header.body.items[0]
+      this.datalist = res.data.data.recom_list
       // console.log(this.datalist);
-    });
+    })
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -147,4 +142,3 @@ img {
   }
 }
 </style>
-

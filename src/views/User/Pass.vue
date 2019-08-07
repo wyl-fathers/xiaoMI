@@ -3,7 +3,7 @@
     <Go class="go2"></Go>
     <div class="layout">
       <div>
-        
+
         <div class="lgnheader">
           <div class="header_tit t_c">
             <em id="custom_display_1" class="milogo">
@@ -107,13 +107,10 @@
                           <circle class="eye_inner" cx="10" cy="8" r="3" />
                         </svg>
                       </i>
-<<<<<<< HEAD
                     </div>
                     <div id="sms-code-panel" class="code_panel" style="display: block;">
-=======
                     </div>-->
                     <!-- <div id="sms-code-panel" class="code_panel" style="display: block;">
->>>>>>> 7cd7db8d6a3127497b161dc6125c65607d29ddaa
                       <div class="send_ticket" href="javascript:;" id="getSMSCode">获取验证码</div>
                     </div>-->
                   </label>
@@ -243,25 +240,23 @@
 </template>
 
 <script>
-import Go from '@/components/Go2-1.vue';
+import Go from '@/components/Go2-1.vue'
 export default {
   components: { Go },
   methods: {},
-  
-  beforeMount() {
-    this.$store.commit("NavHide", false)
-    },
-        updated(){
-          this.$store.commit("NavHide", false)
 
-    },
+  beforeMount () {
+    this.$store.commit('NavHide', false)
+  },
+  updated () {
+    this.$store.commit('NavHide', false)
+  },
 
-  beforeDestroy() {
-    this.$store.commit("NavHide", true);
-    }
-  };
+  beforeDestroy () {
+    this.$store.commit('NavHide', true)
+  }
+}
 </script>
-
 
 <style lang="scss" scoped>
 .go2{
@@ -429,7 +424,6 @@ export default {
           font-size: 0.18rem;
         }
       }
-<<<<<<< HEAD
       //   .labelbox {
       //     border-bottom: 1px solid #d3d3d3;
       //     background-color: #fff;
@@ -456,7 +450,6 @@ export default {
       //       }
       //     }
       //   }
-=======
       .labelbox {
         border-bottom: 1px solid #d3d3d3;
         background-color: #fff;
@@ -485,7 +478,6 @@ export default {
           }
         }
       }
->>>>>>> 7cd7db8d6a3127497b161dc6125c65607d29ddaa
     }
     .btns_bg {
       padding-top: 24px;
